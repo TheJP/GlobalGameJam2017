@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Player : Entity {
 
+    public float speed = 0.1f;
 
-    private List<GameObject> damageDealer;
-    private float speed = 0.1f;
-
-    void Start () {
-        Health = 500;
+    protected override void Start () {
+        base.Start();
+        base.faction = Faction.PC;
 	}
-	
-	void FixedUpdate () {
 
+    protected override void FixedUpdate () {
+        base.FixedUpdate();
         Move();
         
     }
@@ -38,11 +37,6 @@ public class Player : Entity {
             v += (Vector3.right);
         }
         transform.Translate(v.normalized * speed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-
     }
 
 }
