@@ -5,13 +5,14 @@ using UnityEngine;
 public class Enemy : Entity {
 
 	// Use this for initialization
-	void Start () {
-        Health = 100;
+	protected override void Start () {
+        base.Start();
+        base.faction = Faction.NPC;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    protected override void FixedUpdate () {
+        base.FixedUpdate();
+    }
 
 }
