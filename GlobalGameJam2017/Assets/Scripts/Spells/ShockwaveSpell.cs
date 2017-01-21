@@ -7,7 +7,8 @@ public class ShockwaveSpell : Spell
 {
     public Transform spellIndicator;
     public Transform spellMaxRangeIndicator;
-    public float force;
+    public GameObject dustParticles;
+    public float force = 1.0f;
 
     protected override void FixedUpdate()
     {
@@ -27,7 +28,22 @@ public class ShockwaveSpell : Spell
 
     protected override bool Cast(float channelingTime)
     {
-
+        var scale = (channelingTime / maxChannelingTime) * maxCastRange / 10.0f;
+        var main = dustParticles.GetComponent<ParticleSystem>().main;
+        main.startLifetime = scale;
+        Invoke("ShowDust", 1.0f);
         return true;
+    }
+
+    private void ShowDust()
+    {
+        dustParticles.SetActive(true);
+        Invoke("ResetDust", 2.1f);
+    }
+
+    private void ResetDust()
+    {
+        dustParticles.SetActive(false);
+        dustParticles.GetComponent<ParticleSystem>().Clear();
     }
 }
