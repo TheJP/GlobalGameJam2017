@@ -25,7 +25,7 @@ public class Player : Entity {
         if (Health > 0.0f)
         {
             Move();
-            if (Input.GetButton(playerName + "_a")) { animator.SetTrigger(SlamTrigger); }
+            if (Input.GetButtonDown(playerName + "_a")) { animator.SetTrigger(SlamTrigger); }
         }
     }
 
