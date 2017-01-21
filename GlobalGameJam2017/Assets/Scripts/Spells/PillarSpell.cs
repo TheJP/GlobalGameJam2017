@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,5 +24,12 @@ public class PillarSpell : Spell {
             spellIndicator.localPosition = Vector3.zero;
             spellIndicator.localScale = new Vector3(1e-5f, spellIndicator.localScale.y, 1e-5f);
         }
+    }
+
+    protected override bool Cast(float channelingTime)
+    {
+        
+
+        return true;
     }
 }
