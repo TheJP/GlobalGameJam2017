@@ -12,7 +12,6 @@ public class Enemy : Entity
 
     public int attackRange;
     public int attackSpeed;
-    public GameObject playersGroup;
     [Tooltip("Physical force which the enemy can use to walk")]
     public float walkingForce = 1.0f;
     public float fallingForce = 100.0f;
@@ -62,7 +61,7 @@ public class Enemy : Entity
         float bestRemainingDistance = float.PositiveInfinity;
         Player nearestPlayer = null;
         var agent = GetComponent<NavMeshAgent>();
-        foreach (var player in playersGroup.GetComponentsInChildren<Player>().Where(p => p.Health > 0.0f))
+        foreach (var player in FindObjectsOfType<Player>().Where(p => p.Health > 0.0f))
         {
             path = new NavMeshPath();
             if (!NavMesh.CalculatePath(transform.position, player.transform.position, -1, path)) { continue; }
