@@ -8,11 +8,12 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : Entity {
 
+    private const string SlamTrigger = "Slam";
+
     public string playerName = "A";
-    public float speed = 0.1f;
     public Animator animator;
 
-    private const string SlamTrigger = "Slam";
+    public Spell Spell { get; set; }
 
     protected override void Start () {
         base.Start();
@@ -25,7 +26,11 @@ public class Player : Entity {
         if (Health > 0.0f)
         {
             Move();
-            if (Input.GetButtonDown(playerName + "_a")) { animator.SetTrigger(SlamTrigger); }
+            if (Input.GetButtonDown(playerName + "_a") && Spell != null) { Spell.StartChanneling(); }
+            if (Input.GetButtonUp(playerName + "_a"))
+            {
+                if (Spell.Cast()) { animator.SetTrigger(SlamTrigger); }
+            }
         }
     }
 
@@ -35,7 +40,8 @@ public class Player : Entity {
         var isWalking = v.sqrMagnitude > 0.5f;
         animator.SetBool("Walking", isWalking);
         if (isWalking) { transform.rotation = Quaternion.LookRotation(v); }
-        GetComponent<NavMeshAgent>().Move(v * speed);
+        var agent = GetComponent<NavMeshAgent>();
+        agent.Move(v * agent.speed);
     }
 
 }
