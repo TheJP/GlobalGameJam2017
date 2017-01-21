@@ -15,12 +15,13 @@ public class PillarEffect : MonoBehaviour
     public float sleep = 1.7f;
     public float motion = 0.3f;
     public float wait = 0.4f;
+    public ParticleSystem particleSystem;
     private float factor = 0.4f;
+
 
     // Use this for initialization
     void Start()
     {
-
     }
 
     private void LateUpdate()
@@ -28,6 +29,7 @@ public class PillarEffect : MonoBehaviour
         if (hold)
         {
             transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+            particleSystem.transform.position = transform.position;
         }
     }
 
@@ -49,6 +51,11 @@ public class PillarEffect : MonoBehaviour
     private void StartRising()
     {
         transform.localScale = new Vector3(radius, 1, radius);
+        transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+        particleSystem.transform.position = transform.position;
+        var module = particleSystem.shape;
+        module.radius = radius;
+        particleSystem.Play();
         rising = true;
         hold = true;
         Invoke("StopRising", motion);
