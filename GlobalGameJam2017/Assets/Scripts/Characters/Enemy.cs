@@ -10,7 +10,7 @@ using UnityEngine.Assertions;
 public class Enemy : Entity
 {
 
-    public int attackRange;
+    public float attackRange;
     public int attackSpeed;
     [Tooltip("Physical force which the enemy can use to walk")]
     public float walkingForce = 1.0f;

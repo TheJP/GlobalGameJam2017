@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseDamage: 20
+  baseDamage: 0
   playerName: A
   animator: {fileID: 95829333196091860}
 --- !u!136 &136568814788915764

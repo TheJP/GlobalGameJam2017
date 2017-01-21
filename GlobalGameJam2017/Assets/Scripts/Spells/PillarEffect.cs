@@ -31,7 +31,7 @@ public class PillarEffect : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-    }
+        }
 
     private void LateUpdate()
     {

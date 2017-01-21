@@ -615,10 +615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseDamage: 20
-  attackRange: 0
-  attackSpeed: 0
-  playersGroup: {fileID: 0}
+  baseDamage: 100
+  attackRange: 2.5
+  attackSpeed: 20
   walkingForce: 300
   fallingForce: 5
   shockwaveForce: 15000
