@@ -23,7 +23,11 @@ public class Player : Entity {
 
     protected override void FixedUpdate () {
         base.FixedUpdate();
-        if (Health > 0.0f)
+    }
+
+    private void Update()
+    {
+        if(Health > 0.0f)
         {
             Move();
             if (Input.GetButtonDown(playerName + "_a") && Spell != null) { Spell.StartChanneling(); }
