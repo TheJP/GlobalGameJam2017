@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody))]
@@ -11,11 +12,11 @@ public class Enemy : Entity
 
     public int attackRange;
     public int attackSpeed;
-    public GameObject playersGroup;
     [Tooltip("Physical force which the enemy can use to walk")]
     public float walkingForce = 1.0f;
     public float fallingForce = 100.0f;
     public float shockwaveForce = 4000.0f;
+    public Animator animator;
 
     private Player agro = null;
     private bool attacking = false;
@@ -28,6 +29,8 @@ public class Enemy : Entity
         var agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         //agent.updateRotation = false;
+        Assert.IsNotNull(animator, "Need furby / dwarvf animator in Enemy");
+        animator.SetBool("Walking", true);
     }
 
     protected override void FixedUpdate()
@@ -58,7 +61,7 @@ public class Enemy : Entity
         float bestRemainingDistance = float.PositiveInfinity;
         Player nearestPlayer = null;
         var agent = GetComponent<NavMeshAgent>();
-        foreach (var player in playersGroup.GetComponentsInChildren<Player>().Where(p => p.Health > 0.0f))
+        foreach (var player in FindObjectsOfType<Player>().Where(p => p.Health > 0.0f))
         {
             path = new NavMeshPath();
             if (!NavMesh.CalculatePath(transform.position, player.transform.position, -1, path)) { continue; }
@@ -84,6 +87,7 @@ public class Enemy : Entity
         if (tick == attackSpeed)
         {
             agro.DoDamage(this.Damage);
+            animator.SetTrigger("Attack");
             tick = 0;
         }
         tick++;

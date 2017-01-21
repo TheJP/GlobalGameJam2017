@@ -14,6 +14,8 @@ public class ShockwaveSpell : Spell
     private const float WaitBevoreResetDust = 2.1f;
     private const float DustVelocity = 10.0f;
 
+    private Vector3? dustParticlesPosition = null;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -30,6 +32,11 @@ public class ShockwaveSpell : Spell
         }
     }
 
+    private void LateUpdate()
+    {
+        if(dustParticlesPosition.HasValue) { dustParticles.transform.position = dustParticlesPosition.Value; }
+    }
+
     protected override bool Cast(float channelingTime)
     {
         var scale = (channelingTime / maxChannelingTime) * maxCastRange / DustVelocity;
@@ -41,6 +48,7 @@ public class ShockwaveSpell : Spell
 
     private void ShowDust()
     {
+        dustParticlesPosition = dustParticles.transform.position;
         dustParticles.SetActive(true);
         Invoke("ResetDust", WaitBevoreResetDust);
     }
@@ -49,5 +57,7 @@ public class ShockwaveSpell : Spell
     {
         dustParticles.SetActive(false);
         dustParticles.GetComponent<ParticleSystem>().Clear();
+        dustParticles.transform.localPosition = new Vector3(0.0f, dustParticles.transform.localPosition.y, 0.0f);
+        dustParticlesPosition = null;
     }
 }
