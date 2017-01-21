@@ -105,6 +105,7 @@ ModelImporter:
     7400000: Idle
     7400002: Slam
     7400004: Walk
+    7400006: GetHit
     9500000: //RootNode
     13700000: pCube1
     13700002: pCube20
@@ -376,6 +377,118 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: golem_T
+        weight: 1
+      - path: golem_T/group1
+        weight: 1
+      - path: golem_T/group1/pCube20
+        weight: 1
+      - path: golem_T/group1/pCube21
+        weight: 1
+      - path: golem_T/group1/pCube39
+        weight: 1
+      - path: golem_T/group2
+        weight: 1
+      - path: golem_T/group2/pCube22
+        weight: 1
+      - path: golem_T/group2/pCube23
+        weight: 1
+      - path: golem_T/group2/pCube40
+        weight: 1
+      - path: golem_T/group3
+        weight: 1
+      - path: golem_T/group3/pCube37
+        weight: 1
+      - path: golem_T/group3/pCube38
+        weight: 1
+      - path: golem_T/group4
+        weight: 1
+      - path: golem_T/group4/pCube41
+        weight: 1
+      - path: golem_T/group4/pCube42
+        weight: 1
+      - path: golem_T/pCube1
+        weight: 1
+      - path: golem_T/pCube30
+        weight: 1
+      - path: golem_T/pCube31
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/LeftUpLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Hips/RightUpLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot/RightFootEnd
+        weight: 1
+      - path: Hips/Spine
+        weight: 1
+      - path: Hips/Spine/Spine1
+        weight: 1
+      - path: Hips/Spine/Spine1/Head
+        weight: 1
+      - path: Hips/Spine/Spine1/Head/HeadEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand/LeftHandEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand/RightHandEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GetHit
+      takeName: GetHit
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
