@@ -44,7 +44,7 @@ public abstract class Entity : MonoBehaviour {
     // Update is called once per frame
     protected virtual void FixedUpdate () {
         DoDamage();
-	}
+    }
 
     public void AddDamageDealer(Entity entity)
     {
