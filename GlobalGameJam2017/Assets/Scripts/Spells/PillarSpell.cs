@@ -37,7 +37,7 @@ public class PillarSpell : Spell {
     {
         var factor = Math.Min(((Time.time - ChannelingStartTime) / maxChannelingTime), 1.0f);
         var radius = factor * (maxRadius - minRadius) + minRadius;
-        effect.GetComponentInChildren<PillarEffect>().StartEffect(spellIndicator.localPosition, radius, channelingTime / maxChannelingTime);
+        effect.GetComponentInChildren<PillarEffect>().StartEffect(spellIndicator.position, radius, channelingTime / maxChannelingTime);
         return true;
     }
 }
