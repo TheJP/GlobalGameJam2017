@@ -10,6 +10,10 @@ public class ShockwaveSpell : Spell
     public GameObject dustParticles;
     public float force = 1.0f;
 
+    private const float WaitBevoreDust = 1.3f;
+    private const float WaitBevoreResetDust = 2.1f;
+    private const float DustVelocity = 10.0f;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -28,17 +32,17 @@ public class ShockwaveSpell : Spell
 
     protected override bool Cast(float channelingTime)
     {
-        var scale = (channelingTime / maxChannelingTime) * maxCastRange / 10.0f;
+        var scale = (channelingTime / maxChannelingTime) * maxCastRange / DustVelocity;
         var main = dustParticles.GetComponent<ParticleSystem>().main;
         main.startLifetime = scale;
-        Invoke("ShowDust", 1.0f);
+        Invoke("ShowDust", WaitBevoreDust);
         return true;
     }
 
     private void ShowDust()
     {
         dustParticles.SetActive(true);
-        Invoke("ResetDust", 2.1f);
+        Invoke("ResetDust", WaitBevoreResetDust);
     }
 
     private void ResetDust()
