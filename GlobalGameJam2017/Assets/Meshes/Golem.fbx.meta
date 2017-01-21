@@ -1,0 +1,525 @@
+fileFormatVersion: 2
+guid: 4696dbc38242b164f9a09c61f9ce0459
+timeCreated: 1484970220
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: golem_T
+    100002: group1
+    100004: group2
+    100006: group3
+    100008: group4
+    100010: Head
+    100012: HeadEnd
+    100014: Hips
+    100016: LeftAnkle
+    100018: LeftArm
+    100020: LeftFoot
+    100022: LeftFootEnd
+    100024: LeftForeArm
+    100026: LeftHand
+    100028: LeftHandEnd
+    100030: LeftLeg
+    100032: LeftUpLeg
+    100034: pCube1
+    100036: pCube20
+    100038: pCube21
+    100040: pCube22
+    100042: pCube23
+    100044: pCube30
+    100046: pCube31
+    100048: pCube37
+    100050: pCube38
+    100052: pCube39
+    100054: pCube40
+    100056: pCube41
+    100058: pCube42
+    100060: //RootNode
+    100062: RightAnkle
+    100064: RightArm
+    100066: RightFoot
+    100068: RightFootEnd
+    100070: RightForeArm
+    100072: RightHand
+    100074: RightHandEnd
+    100076: RightLeg
+    100078: RightUpLeg
+    100080: Spine
+    100082: Spine1
+    400000: golem_T
+    400002: group1
+    400004: group2
+    400006: group3
+    400008: group4
+    400010: Head
+    400012: HeadEnd
+    400014: Hips
+    400016: LeftAnkle
+    400018: LeftArm
+    400020: LeftFoot
+    400022: LeftFootEnd
+    400024: LeftForeArm
+    400026: LeftHand
+    400028: LeftHandEnd
+    400030: LeftLeg
+    400032: LeftUpLeg
+    400034: pCube1
+    400036: pCube20
+    400038: pCube21
+    400040: pCube22
+    400042: pCube23
+    400044: pCube30
+    400046: pCube31
+    400048: pCube37
+    400050: pCube38
+    400052: pCube39
+    400054: pCube40
+    400056: pCube41
+    400058: pCube42
+    400060: //RootNode
+    400062: RightAnkle
+    400064: RightArm
+    400066: RightFoot
+    400068: RightFootEnd
+    400070: RightForeArm
+    400072: RightHand
+    400074: RightHandEnd
+    400076: RightLeg
+    400078: RightUpLeg
+    400080: Spine
+    400082: Spine1
+    4300000: pCube1
+    4300002: pCube30
+    4300004: pCube31
+    4300006: pCube21
+    4300008: pCube39
+    4300010: pCube20
+    4300012: pCube22
+    4300014: pCube40
+    4300016: pCube23
+    4300018: pCube37
+    4300020: pCube38
+    4300022: pCube41
+    4300024: pCube42
+    7400000: Idle
+    7400002: Slam
+    7400004: Walk
+    9500000: //RootNode
+    13700000: pCube1
+    13700002: pCube20
+    13700004: pCube21
+    13700006: pCube22
+    13700008: pCube23
+    13700010: pCube30
+    13700012: pCube31
+    13700014: pCube37
+    13700016: pCube38
+    13700018: pCube39
+    13700020: pCube40
+    13700022: pCube41
+    13700024: pCube42
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 1
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: golem_T
+        weight: 1
+      - path: golem_T/group1
+        weight: 1
+      - path: golem_T/group1/pCube20
+        weight: 1
+      - path: golem_T/group1/pCube21
+        weight: 1
+      - path: golem_T/group1/pCube39
+        weight: 1
+      - path: golem_T/group2
+        weight: 1
+      - path: golem_T/group2/pCube22
+        weight: 1
+      - path: golem_T/group2/pCube23
+        weight: 1
+      - path: golem_T/group2/pCube40
+        weight: 1
+      - path: golem_T/group3
+        weight: 1
+      - path: golem_T/group3/pCube37
+        weight: 1
+      - path: golem_T/group3/pCube38
+        weight: 1
+      - path: golem_T/group4
+        weight: 1
+      - path: golem_T/group4/pCube41
+        weight: 1
+      - path: golem_T/group4/pCube42
+        weight: 1
+      - path: golem_T/pCube1
+        weight: 1
+      - path: golem_T/pCube30
+        weight: 1
+      - path: golem_T/pCube31
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/LeftUpLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Hips/RightUpLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot/RightFootEnd
+        weight: 1
+      - path: Hips/Spine
+        weight: 1
+      - path: Hips/Spine/Spine1
+        weight: 1
+      - path: Hips/Spine/Spine1/Head
+        weight: 1
+      - path: Hips/Spine/Spine1/Head/HeadEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand/LeftHandEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand/RightHandEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slam
+      takeName: Slam
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: golem_T
+        weight: 1
+      - path: golem_T/group1
+        weight: 1
+      - path: golem_T/group1/pCube20
+        weight: 1
+      - path: golem_T/group1/pCube21
+        weight: 1
+      - path: golem_T/group1/pCube39
+        weight: 1
+      - path: golem_T/group2
+        weight: 1
+      - path: golem_T/group2/pCube22
+        weight: 1
+      - path: golem_T/group2/pCube23
+        weight: 1
+      - path: golem_T/group2/pCube40
+        weight: 1
+      - path: golem_T/group3
+        weight: 1
+      - path: golem_T/group3/pCube37
+        weight: 1
+      - path: golem_T/group3/pCube38
+        weight: 1
+      - path: golem_T/group4
+        weight: 1
+      - path: golem_T/group4/pCube41
+        weight: 1
+      - path: golem_T/group4/pCube42
+        weight: 1
+      - path: golem_T/pCube1
+        weight: 1
+      - path: golem_T/pCube30
+        weight: 1
+      - path: golem_T/pCube31
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/LeftUpLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Hips/RightUpLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot/RightFootEnd
+        weight: 1
+      - path: Hips/Spine
+        weight: 1
+      - path: Hips/Spine/Spine1
+        weight: 1
+      - path: Hips/Spine/Spine1/Head
+        weight: 1
+      - path: Hips/Spine/Spine1/Head/HeadEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand/LeftHandEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand/RightHandEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: golem_T
+        weight: 1
+      - path: golem_T/group1
+        weight: 1
+      - path: golem_T/group1/pCube20
+        weight: 1
+      - path: golem_T/group1/pCube21
+        weight: 1
+      - path: golem_T/group1/pCube39
+        weight: 1
+      - path: golem_T/group2
+        weight: 1
+      - path: golem_T/group2/pCube22
+        weight: 1
+      - path: golem_T/group2/pCube23
+        weight: 1
+      - path: golem_T/group2/pCube40
+        weight: 1
+      - path: golem_T/group3
+        weight: 1
+      - path: golem_T/group3/pCube37
+        weight: 1
+      - path: golem_T/group3/pCube38
+        weight: 1
+      - path: golem_T/group4
+        weight: 1
+      - path: golem_T/group4/pCube41
+        weight: 1
+      - path: golem_T/group4/pCube42
+        weight: 1
+      - path: golem_T/pCube1
+        weight: 1
+      - path: golem_T/pCube30
+        weight: 1
+      - path: golem_T/pCube31
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/LeftUpLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftAnkle/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Hips/RightUpLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightAnkle/RightFoot/RightFootEnd
+        weight: 1
+      - path: Hips/Spine
+        weight: 1
+      - path: Hips/Spine/Spine1
+        weight: 1
+      - path: Hips/Spine/Spine1/Head
+        weight: 1
+      - path: Hips/Spine/Spine1/Head/HeadEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Hips/Spine/Spine1/LeftArm/LeftForeArm/LeftHand/LeftHandEnd
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Hips/Spine/Spine1/RightArm/RightForeArm/RightHand/RightHandEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
