@@ -51,7 +51,7 @@ namespace Assets.Scripts.Menu.Screens
                 //Left
                 if (Math.Abs(Input.GetAxisRaw(playerName + "_Horizontal") - 1) < 0.1f)
                 {
-
+                   // Players.Where(p => p.transform.parent.name == "Player" + playerName + "Slot").ToList()[0].
                 }
 
                 //Right

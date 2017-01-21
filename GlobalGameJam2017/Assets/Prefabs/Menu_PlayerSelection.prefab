@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 222420367544306948}
   - component: {fileID: 114901718675163892}
   - component: {fileID: 225665757469880058}
-  - component: {fileID: 114369929352497070}
+  - component: {fileID: 114864650428121358}
   m_Layer: 5
   m_Name: Menu_PlayerSelection
   m_TagString: Untagged
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114369929352497070}
+      - m_Target: {fileID: 114864650428121358}
         m_MethodName: PreConfirm
         m_Mode: 1
         m_Arguments:
@@ -322,32 +322,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114369929352497070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1170288368139230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7bd476b58d5be4ba46304e69512b2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GolemAttackType: 0
-  btnA: {fileID: 1073657905935690}
-  btnB: {fileID: 1885982599945706}
-  MenuController: {fileID: 0}
-  Attacks:
-  - {fileID: 21300000, guid: 450587f25bf7c25469321359a6f8523d, type: 3}
-  - {fileID: 21300000, guid: 189a9a355ca41e945b194c1226f509e1, type: 3}
-  - {fileID: 21300000, guid: a8b4e46b72605dd48bdd597d1cbb2802, type: 3}
-  Golems:
-  - {fileID: 21300000, guid: be71edc0940f8594da2e8d35f3d2bfc9, type: 3}
-  - {fileID: 21300000, guid: 8154b89a588b33649ae2912ac8de5ccb, type: 3}
-  - {fileID: 21300000, guid: a43e47d6c01815b43a433c9dd01a4a98, type: 3}
-  - {fileID: 21300000, guid: ea807e361104e4e4caf3e9e78a284aac, type: 3}
-  ReadyLabel: {fileID: 1055126365931770}
-  IsReady: 0
 --- !u!114 &114568473431181972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114369929352497070}
+      - m_Target: {fileID: 114864650428121358}
         m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
@@ -493,7 +467,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114369929352497070}
+      - m_Target: {fileID: 114864650428121358}
         m_MethodName: ChangeGolemType
         m_Mode: 5
         m_Arguments:
@@ -545,7 +519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114369929352497070}
+      - m_Target: {fileID: 114864650428121358}
         m_MethodName: ChangeGolemType
         m_Mode: 5
         m_Arguments:
@@ -612,6 +586,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114864650428121358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170288368139230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf3a603b33a86347bb5d67fb3ae1d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GolemAttackType: 0
+  btnA: {fileID: 1073657905935690}
+  btnB: {fileID: 1885982599945706}
+  btnLeft: {fileID: 1909415478606070}
+  btnRight: {fileID: 1818583266178540}
+  MenuController: {fileID: 0}
+  Attacks:
+  - {fileID: 21300000, guid: 450587f25bf7c25469321359a6f8523d, type: 3}
+  - {fileID: 21300000, guid: 189a9a355ca41e945b194c1226f509e1, type: 3}
+  - {fileID: 21300000, guid: a8b4e46b72605dd48bdd597d1cbb2802, type: 3}
+  Golems:
+  - {fileID: 21300000, guid: be71edc0940f8594da2e8d35f3d2bfc9, type: 3}
+  - {fileID: 21300000, guid: 8154b89a588b33649ae2912ac8de5ccb, type: 3}
+  - {fileID: 21300000, guid: a43e47d6c01815b43a433c9dd01a4a98, type: 3}
+  - {fileID: 21300000, guid: ea807e361104e4e4caf3e9e78a284aac, type: 3}
+  ReadyLabel: {fileID: 1055126365931770}
+  IsReady: 0
 --- !u!114 &114875586689998222
 MonoBehaviour:
   m_ObjectHideFlags: 1
