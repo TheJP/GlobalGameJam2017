@@ -77,7 +77,6 @@ public class PillarEffect : MonoBehaviour
         this.radius = radius;
         this.pos = pos;
         this.strength = strength;
-        Debug.Log("Invoking StartRising");
         Invoke("StartRising", sleep);
     }
     private void Reset()

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.442686, g: 0.49181366, b: 0.57161057, a: 1}
+  m_IndirectSpecularColor: {r: 0.44268563, g: 0.49181378, b: 0.57161057, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -375,52 +375,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &673094150
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -44.660187
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 5.921772
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674824747202626, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752044058780662, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3f26a02b4d2bfc142a6c339700b698f0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &741038580
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +465,7 @@ MonoBehaviour:
   - {fileID: 769229658}
   playerPrefab: {fileID: 1459392997114648, guid: 233568e53d185364d9a7c232eb796c78,
     type: 2}
-  shockwaveSpellPrefab: {fileID: 1001357619379576, guid: 3f26a02b4d2bfc142a6c339700b698f0,
+  shockwaveSpellPrefab: {fileID: 1369201752973362, guid: 1556dd0de1c2a4e46bf467f370c75a31,
     type: 2}
   playersGroup: {fileID: 451463200}
 --- !u!4 &896608053
