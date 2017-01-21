@@ -6,6 +6,7 @@ public abstract class Spell : MonoBehaviour
 {
     public float maxChannelingTime = 5.0f;
     public float maxCastRange = 15.0f;
+    public float channelingTimeBonus = 0.5f;
 
     protected float ChannelingStartTime { get; private set; }
 
@@ -26,7 +27,7 @@ public abstract class Spell : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if(Time.time > ChannelingStartTime + maxChannelingTime) { ChannelingStartTime = float.NaN; }
+        if(Time.time > ChannelingStartTime + maxChannelingTime + channelingTimeBonus) { ChannelingStartTime = float.NaN; }
     }
 
     public virtual void StartChanneling()
@@ -34,10 +35,12 @@ public abstract class Spell : MonoBehaviour
         ChannelingStartTime = Time.time;
     }
 
-    public virtual bool Cast()
+    public bool Cast()
     {
-        var channeling = IsChanneling;
+        var success = IsChanneling && Cast(Time.time - ChannelingStartTime);
         ChannelingStartTime = float.NaN;
-        return channeling;
+        return success;
     }
+
+    protected abstract bool Cast(float channelingTime);
 }
