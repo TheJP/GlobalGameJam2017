@@ -12,11 +12,19 @@ public class PillarEffect : MonoBehaviour
     float radius = 0f;
     Vector3 pos = Vector3.zero;
 
+    List<Entity> entities = new List<Entity>();
+
     public float sleep = 1.7f;
     public float motion = 0.3f;
     public float wait = 0.4f;
     public ParticleSystem particleSystem;
     private float factor = 0.4f;
+
+    public float Damage
+    {
+        get;
+        set;
+    }
 
 
     // Use this for initialization
@@ -54,7 +62,7 @@ public class PillarEffect : MonoBehaviour
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
         particleSystem.transform.position = transform.position;
         var module = particleSystem.shape;
-        module.radius = radius;
+        module.radius = radius; 
         particleSystem.Play();
         rising = true;
         hold = true;
@@ -63,6 +71,7 @@ public class PillarEffect : MonoBehaviour
 
     private void StopRising()
     {
+        CalcDamage();
         rising = false;
         Invoke("StartLowering", wait);
     }
@@ -89,6 +98,32 @@ public class PillarEffect : MonoBehaviour
     private void Reset()
     {
         transform.localPosition = Vector3.zero;
-        transform.localScale = new Vector3(1e-5f, 1, 1e-5f);
+        transform.localScale = new Vector3(1e-7f, 1, 1e-7f);
+    }
+
+    private void CalcDamage()
+    {
+        foreach(Entity e in entities)
+        {
+            e.DoDamage(200f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Entity entity = other.GetComponent<Entity>();
+        if(entity != null)
+        {
+            entities.Add(entity);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Entity entity = other.GetComponent<Entity>();
+        if (entity != null)
+        {
+            entities.Remove(entity);
+        }
     }
 }
