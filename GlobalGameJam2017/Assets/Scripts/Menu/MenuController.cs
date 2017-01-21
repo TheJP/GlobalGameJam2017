@@ -11,10 +11,11 @@ namespace Assets.Scripts.Menu
         public GameObject BtnSingleplayer;
 
 
-        public GameObject ScreenEnter;
-        public GameObject ScreenMultiplayer;
-        public GameObject ScreenSingleplayer;
-        public GameObject ScreenOptions;
+        public MenuScreen ScreenEnter;
+        public MenuScreen ScreenMultiplayer;
+        public MenuScreen ScreenSingleplayer;
+        public MenuScreen ScreenGameConsole;
+        public MenuScreen ScreenOptions;
 
 
         public bool IsMultiplayer = false;
@@ -28,32 +29,29 @@ namespace Assets.Scripts.Menu
 
         public void GotoSingleplayer()
         {
-            Debug.Log("Singleplayer");
             IsSinglelayer = true;
 
-            ScreenEnter.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
-            ScreenSingleplayer.GetComponent<MenuScreen>().SlideIn();
+            ScreenEnter.SlideOut(SlideDirection.left);
+            ScreenSingleplayer.SlideIn();
          
         }
 
         public void GotoMultiplayer()
         {
-            Debug.Log("Muliplayer");
             IsMultiplayer = true;
 
-            ScreenEnter.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
-            ScreenMultiplayer.GetComponent<MenuScreen>().SlideIn();
+            ScreenEnter.SlideOut(SlideDirection.left);
+            ScreenMultiplayer.SlideIn();
         }
 
         public void GotoEnterScreen()
         {
-            Debug.Log("EnterScreen");
             IsMultiplayer = false;
             IsSinglelayer = false;
 
-            ScreenEnter.GetComponent<MenuScreen>().SlideIn();
-            ScreenMultiplayer.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
-            ScreenSingleplayer.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
+            ScreenEnter.SlideIn();
+            ScreenMultiplayer.SlideOut(SlideDirection.left);
+            ScreenSingleplayer.SlideOut(SlideDirection.left);
         }
 
 
