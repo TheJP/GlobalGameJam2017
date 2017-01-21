@@ -124,7 +124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   baseDamage: 20
+  attackRange: 0
+  attackSpeed: 0
   playersGroup: {fileID: 0}
+  walkingForce: 150
+  fallingForce: 100
 --- !u!136 &136947856005241172
 CapsuleCollider:
   m_ObjectHideFlags: 1
