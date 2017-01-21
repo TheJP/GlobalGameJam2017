@@ -5,16 +5,18 @@ using UnityEngine;
 public abstract class Spell : MonoBehaviour
 {
     public float maxChannelingTime = 5.0f;
-    protected float channelingStartTime { get; private set; }
+    public float maxCastRange = 15.0f;
+
+    protected float ChannelingStartTime { get; private set; }
 
     public bool IsChanneling
     {
-        get { return !float.IsNaN(channelingStartTime); }
+        get { return !float.IsNaN(ChannelingStartTime); }
     }
 
     protected virtual void Awake()
     {
-        channelingStartTime = float.NaN;
+        ChannelingStartTime = float.NaN;
         //Attach spell to player if possible
         var player = transform.parent.GetComponent<Player>();
         if(player != null) { player.Spell = this; }
@@ -24,18 +26,18 @@ public abstract class Spell : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if(channelingStartTime + maxChannelingTime > Time.time) { channelingStartTime = float.NaN; }
+        if(Time.time > ChannelingStartTime + maxChannelingTime) { ChannelingStartTime = float.NaN; }
     }
 
     public virtual void StartChanneling()
     {
-        channelingStartTime = Time.time;
+        ChannelingStartTime = Time.time;
     }
 
     public virtual bool Cast()
     {
         var channeling = IsChanneling;
-        channelingStartTime = float.NaN;
+        ChannelingStartTime = float.NaN;
         return channeling;
     }
 }
