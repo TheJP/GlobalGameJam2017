@@ -532,16 +532,6 @@ Prefab:
       propertyPath: playersGroup
       value: 
       objectReference: {fileID: 451463199}
-    - target: {fileID: 195701476018511790, guid: ecad99af6e3c9d34dabea710512e9e69,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 195701476018511790, guid: ecad99af6e3c9d34dabea710512e9e69,
-        type: 2}
-      propertyPath: m_Speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecad99af6e3c9d34dabea710512e9e69, type: 2}
   m_IsPrefabParent: 0
@@ -550,26 +540,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4533877082039496, guid: ecad99af6e3c9d34dabea710512e9e69,
     type: 2}
   m_PrefabInternal: {fileID: 971569971}
---- !u!1 &971569973 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1764231087155904, guid: ecad99af6e3c9d34dabea710512e9e69,
-    type: 2}
-  m_PrefabInternal: {fileID: 971569971}
---- !u!54 &971569980
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 971569973}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1 &1122480128
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +725,7 @@ GameObject:
   - component: {fileID: 1938437679}
   - component: {fileID: 1938437683}
   - component: {fileID: 1938437684}
+  - component: {fileID: 1938437685}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -838,7 +809,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   baseDamage: 20
-  faction: 1
   speed: 0.5
 --- !u!54 &1938437684
 Rigidbody:
@@ -855,6 +825,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &1938437685
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1938437678}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 15
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 0
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2060200766
 GameObject:
   m_ObjectHideFlags: 0

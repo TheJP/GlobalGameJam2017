@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody))]
 public class Player : Entity {
 
     public float speed = 0.1f;
@@ -13,8 +16,7 @@ public class Player : Entity {
 
     protected override void FixedUpdate () {
         base.FixedUpdate();
-        Move();
-        
+        Move();        
     }
 
     private void Move()
@@ -36,7 +38,8 @@ public class Player : Entity {
         {
             v += (Vector3.right);
         }
-        transform.Translate(v.normalized * speed);
+        //transform.Translate(v.normalized * speed);
+        GetComponent<NavMeshAgent>().Move(v.normalized * speed);
     }
 
 }
