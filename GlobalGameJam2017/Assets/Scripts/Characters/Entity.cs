@@ -6,7 +6,6 @@ public abstract class Entity : MonoBehaviour {
 
     public float maxHealth = 100;
     public float baseDamage = 20;
-    public Faction faction;
 
     private readonly List<Entity> damageDealers = new List<Entity>();
     private int tick = 0;
@@ -29,8 +28,14 @@ public abstract class Entity : MonoBehaviour {
         get;
     }
 
-	// Use this for initialization
-	protected virtual void Start () {
+    public Faction EntityFaction
+    {
+        protected set;
+        get;
+    }
+
+    // Use this for initialization
+    protected virtual void Start () {
         Health = maxHealth;
         Damage = baseDamage;
         Immunity = false;
@@ -56,7 +61,7 @@ public abstract class Entity : MonoBehaviour {
         if (tick == 60)
         {
             foreach(Entity entity in damageDealers) {
-                if (this.faction != entity.faction && !Immunity)
+                if (this.EntityFaction != entity.EntityFaction && !Immunity)
                 {
                     Health -= entity.Damage;
                     Debug.Log("Damage dealt: " + entity.Damage);
