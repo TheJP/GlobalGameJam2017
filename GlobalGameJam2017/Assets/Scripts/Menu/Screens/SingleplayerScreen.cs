@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class SingleplayerScreen : MonoBehaviour {
 
-    private string[] _players = { "A"};
+    private string[] _players = {"A"};
 
     public List<MenuPlayer> Players;
 

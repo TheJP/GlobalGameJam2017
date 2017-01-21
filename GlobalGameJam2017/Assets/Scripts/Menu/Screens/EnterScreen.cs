@@ -54,7 +54,6 @@ namespace Assets
                 {
                     BannerSingleplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 255f);
                     BannerMultiplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
-                    Debug.Log("Hier");
                     _isInMultiplayerMode = true;
                 }
 
@@ -63,7 +62,7 @@ namespace Assets
 
         public void ToggleSingleMultiplayer(bool isMulti)
         {
-            Debug.Log("Hier");
+
             _isInMultiplayerMode = isMulti;
                 if (isMulti)
                 {

@@ -10,6 +10,8 @@ namespace Assets.Scripts.Menu
         public GolemAttackType GolemAttackType;
         public GameObject btnA;
         public GameObject btnB;
+        public GameObject btnLeft;
+        public GameObject btnRight;
 
         public GameObject MenuController;
 
@@ -48,6 +50,7 @@ namespace Assets.Scripts.Menu
 
         public void PreConfirm()
         {
+
             this.GetComponent<CanvasGroup>().alpha = 1.0f;
 
             btnA.GetComponent<Button>().onClick.RemoveListener(this.PreConfirm);
@@ -75,7 +78,6 @@ namespace Assets.Scripts.Menu
             hasCanceldTwice = false;
             IsReady = true;
             ReadyLabel.GetComponent<CanvasGroup>().alpha = 1f;
-            Debug.Log(IsReady);
         }
 
         public void Cancel()
