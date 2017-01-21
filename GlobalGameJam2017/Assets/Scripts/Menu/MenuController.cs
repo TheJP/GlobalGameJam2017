@@ -26,7 +26,7 @@ namespace Assets.Scripts.Menu
         private GameObject ScreenSlotBottom;
 
 
-        public void Singleplayer()
+        public void GotoSingleplayer()
         {
             Debug.Log("Singleplayer");
             IsSinglelayer = true;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Menu
          
         }
 
-        public void Multiplayer()
+        public void GotoMultiplayer()
         {
             Debug.Log("Muliplayer");
             IsMultiplayer = true;
@@ -45,8 +45,19 @@ namespace Assets.Scripts.Menu
             ScreenMultiplayer.GetComponent<MenuScreen>().SlideIn();
         }
 
+        public void GotoEnterScreen()
+        {
+            Debug.Log("EnterScreen");
+            IsMultiplayer = false;
+            IsSinglelayer = false;
 
-       
+            ScreenEnter.GetComponent<MenuScreen>().SlideIn();
+            ScreenMultiplayer.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
+            ScreenSingleplayer.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
+        }
+
+
+
 
     }
 }
