@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PillarEffect : MonoBehaviour
 {
@@ -12,13 +13,12 @@ public class PillarEffect : MonoBehaviour
     bool hold = false;
     float radius = 0f;
     Vector3 pos = Vector3.zero;
-
-    List<Entity> entities = new List<Entity>();
+    Vector3 rot = Vector3.zero;
 
     public float sleep = 1.7f;
     public float motion = 0.3f;
     public float wait = 0.4f;
-    public ParticleSystem particleSystem;
+    //public ParticleSystem particle;
     private float factor = 0.4f;
 
     public float Damage
@@ -38,7 +38,8 @@ public class PillarEffect : MonoBehaviour
         if (hold)
         {
             transform.position = new Vector3(pos.x, transform.position.y, pos.z);
-            particleSystem.transform.position = transform.position;
+            transform.eulerAngles = rot;
+            //particle.transform.position = transform.position;
         }
     }
 
@@ -49,6 +50,10 @@ public class PillarEffect : MonoBehaviour
         if (rising)
         {
             transform.Translate(Vector3.up * strength * factor);
+            if(transform.position.y > 0f)
+            {
+                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            }
         }
         if (lowering)
         {
@@ -59,12 +64,13 @@ public class PillarEffect : MonoBehaviour
 
     private void StartRising()
     {
-        transform.localScale = new Vector3(radius, 1, radius);
+        transform.localScale = new Vector3(radius, radius, radius);
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
-        particleSystem.transform.position = transform.position;
-        var module = particleSystem.shape;
-        module.radius = radius; 
-        particleSystem.Play();
+
+    
+        //var module = particle.shape;
+        //module.radius = radius; 
+        //particle.Play();
         rising = true;
         hold = true;
         Invoke("StopRising", motion);
@@ -72,7 +78,6 @@ public class PillarEffect : MonoBehaviour
 
     private void StopRising()
     {
-        CalcDamage();
         rising = false;
         Invoke("StartLowering", wait);
     }
@@ -93,35 +98,23 @@ public class PillarEffect : MonoBehaviour
     {
         this.radius = radius;
         this.pos = pos;
+        this.rot = transform.eulerAngles;
         this.strength = strength;
         Invoke("StartRising", sleep);
     }
     private void Reset()
     {
         transform.localPosition = Vector3.zero;
-        transform.localScale = new Vector3(1e-7f, 1, 1e-7f);
-    }
-
-    private void CalcDamage()
-    {
-        entities = entities.Where(entity => !entity.DoDamage(200f)).ToList();
+        transform.localScale = new Vector3(1e-7f, 1e-7f, 1e-7f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Entity entity = other.GetComponent<Entity>();
+        Enemy entity = other.GetComponent<Enemy>();
         if(entity != null)
         {
-            entities.Add(entity);
+            entity.DoDamage(200);
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Entity entity = other.GetComponent<Entity>();
-        if (entity != null)
-        {
-            entities.Remove(entity);
-        }
-    }
 }
