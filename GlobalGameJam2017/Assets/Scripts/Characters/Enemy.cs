@@ -10,14 +10,16 @@ public class Enemy : Entity
     public GameObject playersGroup;
     private Player agro = null;
 
-    void Start()
+    protected override void Start()
     {
-        Health = 100;
+        base.Start();
+        base.faction = Faction.NPC;
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        if(agro == null || agro.Health <= 0.0f) { AttackNearestPlayer(); }
+        base.FixedUpdate();
+        if (agro == null || agro.Health <= 0.0f) { AttackNearestPlayer(); }
         else { GetComponent<NavMeshAgent>().SetDestination(agro.transform.position); }
     }
 
