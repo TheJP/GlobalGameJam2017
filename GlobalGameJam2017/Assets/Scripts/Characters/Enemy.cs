@@ -15,6 +15,7 @@ public class Enemy : Entity
     [Tooltip("Physical force which the enemy can use to walk")]
     public float walkingForce = 1.0f;
     public float fallingForce = 100.0f;
+    public float shockwaveForce = 4000.0f;
 
     private Player agro = null;
     private bool attacking = false;
@@ -88,4 +89,8 @@ public class Enemy : Entity
         tick++;
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        GetComponent<Rigidbody>().AddForce((transform.position - other.transform.position).normalized * shockwaveForce);
+    }
 }

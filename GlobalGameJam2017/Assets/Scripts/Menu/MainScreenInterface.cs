@@ -7,8 +7,8 @@ public interface MainScreenInterface
     void Sync();
     void SlideIn();
     void SlideOut(SlideDirection to);
-    void Enable();
-    void Disable(bool keepAlive);
+    //void Enable();
+    //void Disable(bool keepAlive);
 }
 
 public class SuperScreenClass : MonoBehaviour, MainScreenInterface
@@ -36,8 +36,17 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
         // Override
     }
 
-    public void Disable(bool keepAlive)
+    void Start()
     {
+        if (CurrentState == ScreenState.inactive)
+        {
+            Disable();
+        }
+    }
+
+    private void Disable()
+    {
+        bool keepAlive = false;
         if (keepAlive)
         {
             Screen.GetComponent<CanvasGroup>().alpha = 0;
@@ -49,7 +58,7 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
         CurrentState = ScreenState.inactive;
     }
 
-    public void Enable()
+    private void Enable()
     {
         CurrentState = ScreenState.active;
         Screen.GetComponent<CanvasGroup>().alpha = 1;
@@ -61,19 +70,21 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
         ScreenSlotCenter = GameObject.Find("SlotCenter");
         if (Application.isPlaying)
         {
-            StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotCenter.transform.position, .75f));
+            ParentCanvas.transform.FindChild(Screen.name).gameObject.SetActive(true);
+            StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotCenter.transform.position, .75f, Enable));
         }
         else
         {
             Screen.transform.position = ScreenSlotCenter.transform.position;
         }
+        
     }
 
     public void SlideOut(SlideDirection to)
     {
         ScreenSlotRight = GameObject.Find("SlotRight");
         ScreenSlotLeft = GameObject.Find("SlotLeft");
-        //ScreenSlotTop = GameObject.Find("SlotTop");
+        ScreenSlotTop = GameObject.Find("SlotTop");
         //ScreenSlotBottom = GameObject.Find("SlotBottom");
 
         switch (to)
@@ -81,7 +92,8 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
             case SlideDirection.left:
                 if (Application.isPlaying)
                 {
-                    StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotLeft.transform.position, .75f));
+                    ParentCanvas.transform.FindChild(Screen.name).gameObject.SetActive(true);
+                    StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotLeft.transform.position, .75f, Disable));
                 }
                 else
                 {
@@ -91,38 +103,30 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
             case SlideDirection.right:
                 if (Application.isPlaying)
                 {
-                    StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotRight.transform.position, .75f));
+                    ParentCanvas.transform.FindChild(Screen.name).gameObject.SetActive(true);
+                    StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotRight.transform.position, .75f, Disable));
                 }
                 else
                 {
                     Screen.transform.position = ScreenSlotRight.transform.position;
                 }
                 break;
-            //case SlideDirection.top:
-            //    if (Application.isPlaying)
-            //    {
-            //        StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotTop.transform.position, .75f));
-            //    }
-            //    else
-            //    {
-            //        Screen.transform.position = ScreenSlotTop.transform.position;
-            //    }
-            //    break;
-            //case SlideDirection.bottom:
-            //    if (Application.isPlaying)
-            //    {
-            //        StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotBottom.transform.position, .75f));
-            //    }
-            //    else
-            //    {
-            //        Screen.transform.position = ScreenSlotBottom.transform.position;
-            //    }
-            //    break;
+            case SlideDirection.top:
+                if (Application.isPlaying)
+                {
+                    ParentCanvas.transform.FindChild(Screen.name).gameObject.SetActive(true);
+                    StartCoroutine(MoveScreenFromTo(Screen.transform.position, ScreenSlotTop.transform.position, .75f, Disable));
+                }
+                else
+                {
+                    Screen.transform.position = ScreenSlotTop.transform.position;
+                }
+                break;
         }
-        
+
     }
 
-    private IEnumerator MoveScreenFromTo(Vector3 a, Vector3 b, float duration)
+    private IEnumerator MoveScreenFromTo(Vector3 a, Vector3 b, float duration, Action callback)
     {
         var timeRemaining = duration;
         while(timeRemaining > 0)
@@ -132,6 +136,7 @@ public class SuperScreenClass : MonoBehaviour, MainScreenInterface
             yield return null;
         }
         Screen.transform.position = b;
+        callback();
     }
 }
 
