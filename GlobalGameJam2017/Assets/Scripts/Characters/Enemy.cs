@@ -34,7 +34,7 @@ public class Enemy : Entity
         foreach (var player in playersGroup.GetComponentsInChildren<Player>().Where(p => p.Health > 0.0f))
         {
             path = new NavMeshPath();
-            if (!NavMesh.CalculatePath(transform.position, player.transform.position, 0, path)) { continue; }
+            if (!NavMesh.CalculatePath(transform.position, player.transform.position, -1, path)) { continue; }
             agent.SetPath(path);
             if (agent.remainingDistance < bestRemainingDistance)
             {
