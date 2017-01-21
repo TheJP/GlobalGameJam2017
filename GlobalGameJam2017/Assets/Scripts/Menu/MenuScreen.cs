@@ -1,19 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MenuScreen : SuperScreenClass
+﻿namespace Assets.Scripts.Menu
 {
-
-    // Use this for initialization
-    void Start()
+    public class MenuScreen : SuperScreenClass
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        
     }
 }
