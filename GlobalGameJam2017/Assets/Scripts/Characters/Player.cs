@@ -8,7 +8,7 @@ public class Player : Entity {
 
     protected override void Start () {
         base.Start();
-        base.faction = Faction.PC;
+        base.EntityFaction = Faction.PC;
 	}
 
     protected override void FixedUpdate () {

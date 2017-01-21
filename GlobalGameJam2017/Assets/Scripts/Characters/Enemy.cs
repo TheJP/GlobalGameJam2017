@@ -15,8 +15,8 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start();
-        base.faction = Faction.NPC;
-    }
+        base.EntityFaction = Faction.NPC;
+	}
 
     protected override void FixedUpdate()
     {
