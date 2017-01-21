@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody))]
 public class Enemy : Entity
 {
 
