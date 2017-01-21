@@ -9,8 +9,12 @@ using System.Linq;
 public class Enemy : Entity
 {
 
+    public int attackRange;
+    public int attackSpeed;
     public GameObject playersGroup;
     private Player agro = null;
+    private bool attacking = false;
+    private int tick = 0;
 
     protected override void Start()
     {
@@ -23,6 +27,18 @@ public class Enemy : Entity
         base.FixedUpdate();
         if (agro == null || agro.Health <= 0.0f) { AttackNearestPlayer(); }
         else { GetComponent<NavMeshAgent>().SetDestination(agro.transform.position); }
+        if (agro != null && Vector3.Distance(transform.position, agro.transform.position) < attackRange)
+        {
+            attacking = true;
+        } else
+        {
+            attacking = false;
+            tick = 0;
+        }
+        if(attacking)
+        {
+            Attack();
+        }
     }
 
     private void AttackNearestPlayer()
@@ -52,6 +68,16 @@ public class Enemy : Entity
             agent.SetPath(bestPath);
             agro = nearestPlayer;
         }
+    }
+
+    private void Attack()
+    {
+        if(tick == attackSpeed)
+        {
+            agro.DoDamage(this.Damage);
+            tick = 0;
+        }
+        tick++;
     }
 
 }
