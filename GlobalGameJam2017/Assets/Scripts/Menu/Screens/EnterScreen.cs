@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.Menu;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets
+namespace Assets.Scripts.Menu.Screens
 {
     public class EnterScreen : MonoBehaviour {
 
@@ -15,8 +13,10 @@ namespace Assets
 
         public GameObject BannerSingleplayer;
         public GameObject BannerMultiplayer;
+        public GameObject BannerCredits;
 
         public bool _isInMultiplayerMode = false;
+        //private int _currentIndex = 0;
 
         void Start () {
 		
@@ -29,7 +29,6 @@ namespace Assets
             {
                 if (Input.GetButtonDown(playerName + "_a"))
                 {
-                    Debug.Log(_isInMultiplayerMode);
                     if (_isInMultiplayerMode)
                     {
                         MenuController.GotoSingleplayer();
@@ -44,6 +43,7 @@ namespace Assets
                 if (Math.Abs(Input.GetAxisRaw(playerName + "_Vertical") - 1) < 0.1f)
                 {
                     BannerSingleplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
+                    BannerCredits.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
                     BannerMultiplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 255f);
                     
                     _isInMultiplayerMode = false;
@@ -54,7 +54,17 @@ namespace Assets
                 {
                     BannerSingleplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 255f);
                     BannerMultiplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
+                    BannerCredits.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
                     _isInMultiplayerMode = true;
+                }
+
+                if (Input.GetButtonDown("Start"))
+                {
+                    BannerSingleplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
+                    BannerMultiplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
+                    BannerCredits.GetComponent<Image>().color = new Color(255f, 255f, 255f, 255f);
+                    MenuController.GotoCreditsScreen();
+                    //MenuController.GotoCreditsScreen();
                 }
 
             }
@@ -68,7 +78,7 @@ namespace Assets
                 {
                     BannerSingleplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
                     BannerMultiplayer.GetComponent<Image>().color = new Color(255f, 255f, 255f, 255f);
-                Debug.Log("Hier");
+
                 _isInMultiplayerMode = true;
                 }
                 else{
