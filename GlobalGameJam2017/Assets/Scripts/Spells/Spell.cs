@@ -37,7 +37,7 @@ public abstract class Spell : MonoBehaviour
 
     public bool Cast()
     {
-        var success = IsChanneling && Cast(Time.time - ChannelingStartTime);
+        var success = IsChanneling && Cast(Mathf.Min(Time.time - ChannelingStartTime, maxChannelingTime));
         ChannelingStartTime = float.NaN;
         return success;
     }
