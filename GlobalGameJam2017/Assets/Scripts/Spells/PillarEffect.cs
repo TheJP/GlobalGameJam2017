@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PillarEffect : MonoBehaviour
@@ -103,10 +104,7 @@ public class PillarEffect : MonoBehaviour
 
     private void CalcDamage()
     {
-        foreach(Entity e in entities)
-        {
-            e.DoDamage(200f);
-        }
+        entities = entities.Where(entity => !entity.DoDamage(200f)).ToList();
     }
 
     private void OnTriggerEnter(Collider other)
