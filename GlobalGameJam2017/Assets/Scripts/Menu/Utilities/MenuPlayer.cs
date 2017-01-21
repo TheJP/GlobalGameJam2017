@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Assets.Scripts.Menu;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Menu
+namespace Assets.Scripts.Menu.Utilities
 {
     public class MenuPlayer : MonoBehaviour
     {
@@ -12,6 +12,7 @@ namespace Assets.Scripts.Menu
         public GameObject btnB;
         public GameObject btnLeft;
         public GameObject btnRight;
+
 
         public GameObject MenuController;
 
@@ -26,6 +27,7 @@ namespace Assets.Scripts.Menu
         private bool _swapList = false;
 
         private bool hasCanceldTwice = false;
+        private Golem _golem;
 
         void Start()
         {
@@ -78,12 +80,38 @@ namespace Assets.Scripts.Menu
             hasCanceldTwice = false;
             IsReady = true;
             ReadyLabel.GetComponent<CanvasGroup>().alpha = 1f;
+
+            _golem = new Golem
+            {
+
+                AttackType = this.GolemAttackType
+            };
+
+            switch (transform.parent.name)
+            {
+                case "PlayerASlot":
+                    _golem.Color = GolemColor.Red;
+                    break;
+                case "PlayerBSlot":
+                    _golem.Color = GolemColor.Blue;
+                    break;
+                case "PlayerCSlot":
+                    _golem.Color = GolemColor.Green;
+                    break;
+                case "PlayerDSlot":
+                    _golem.Color = GolemColor.Yellow;
+                    break;
+            }
+
+            GameObject.Find("MenuCanvas").GetComponent<MenuData>().Golems.Add(_golem);
         }
 
         public void Cancel()
         {
+            GameObject.Find("MenuCanvas").GetComponent<MenuData>().Golems.RemoveAll((x) => x.Color == this._golem.Color);
             if (hasCanceldTwice)
             {
+                GameObject.Find("MenuCanvas").GetComponent<MenuData>().Reset();
                 this.transform.parent.transform.parent.GetComponent<MenuScreen>().SlideOut(SlideDirection.left);
                 MenuController.transform.FindChild("screenEnter").GetComponentInChildren<MenuScreen>().SlideIn();
 
@@ -102,7 +130,7 @@ namespace Assets.Scripts.Menu
 
         public void ChangeGolemType(string direction)
         {
-            Debug.Log(_currentAttackIndex);
+            
             switch (direction)
             {
                 case "Left":
@@ -156,5 +184,5 @@ namespace Assets.Scripts.Menu
 
     }
 
-    public enum GolemAttackType { Pilar, Slam, Beam }
+    
 }
