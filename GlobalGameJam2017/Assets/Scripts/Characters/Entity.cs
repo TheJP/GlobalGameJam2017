@@ -39,9 +39,10 @@ public abstract class Entity : MonoBehaviour
     {
     }
 
-    public bool DoDamage(float dmg)
+    public bool DoDamage(float damage)
     {
-        Health -= dmg;
+        Health -= damage;
+        OnDamageTaken(damage);
         if (Health <= 0.0f)
         {
             Kill();
@@ -49,6 +50,8 @@ public abstract class Entity : MonoBehaviour
         }
         return false;
     }
+
+    protected virtual void OnDamageTaken(float damage) { }
 
     private void Kill()
     {

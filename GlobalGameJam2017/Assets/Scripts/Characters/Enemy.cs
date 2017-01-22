@@ -55,7 +55,7 @@ public class Enemy : Entity
 
         //Handle walking force
         var force = direction * walkingForce;
-        force += new Vector3(Random.Range(0f, 100f), 0f, Random.Range(0f, 100f)).normalized * Random.Range(0.1f, 0.3f) * walkingForce;
+        force += Random.onUnitSphere * Random.Range(0.1f, 0.3f) * walkingForce;
         GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z));
 
         //Attacking

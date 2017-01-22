@@ -16,6 +16,11 @@ public class ShockwaveSpell : Spell
 
     private Vector3? dustParticlesPosition = null;
 
+    protected override float CastingDuration
+    {
+        get { return WaitBevoreDust; }
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
