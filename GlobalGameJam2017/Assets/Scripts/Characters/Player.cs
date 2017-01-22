@@ -12,6 +12,8 @@ public class Player : Entity {
 
     public string playerName = "A";
     public Animator animator;
+    [Tooltip("Chance that the player does not get stunned by an enemy (higher = better for the player")]
+    public float bashEvasionChance = 0.9f;
 
     public Spell Spell { get; set; }
 
@@ -53,4 +55,10 @@ public class Player : Entity {
         agent.Move(v * agent.speed);
     }
 
+    protected override void OnDamageTaken(float damage)
+    {
+        if(Random.Range(0.0f, 1.0f) < bashEvasionChance) { return; } //Evaded
+        if (Spell.IsChanneling) { Spell.CancelChanneling(); }
+        animator.SetTrigger("Damaged");
+    }
 }
