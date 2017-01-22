@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
                 .Where(s => FindObjectsOfType<Entity>().All(e => (s.transform.position - e.transform.position).sqrMagnitude > 1f)))
             {
                 --enemiesToSpawn;
-                var enemy = Instantiate(enemyPrefab, spawn.position, Quaternion.identity, enemiesGroup);
+                Instantiate(enemyPrefab, spawn.position, Quaternion.identity, enemiesGroup);
                 if(enemiesToSpawn <= 0) { break; }
             }
         }

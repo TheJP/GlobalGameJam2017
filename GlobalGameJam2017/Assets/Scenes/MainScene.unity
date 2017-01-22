@@ -80,15 +80,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.5
     accuratePlacement: 0
   m_NavMeshData: {fileID: 23800000, guid: b9597fd8a906d38408d13765d55a5959, type: 2}
 --- !u!1 &25129188
@@ -648,48 +648,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1314920803
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144184889982054, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 233568e53d185364d9a7c232eb796c78, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1585712792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,8 +1231,8 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: f58f8edd9a9d0ff44b47f52af377c357, type: 3}
   m_PrefabInternal: {fileID: 1929814309}
---- !u!136 &1929814330
-CapsuleCollider:
+--- !u!64 &1929814330
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1282,10 +1240,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.051802825
-  m_Height: 0.28
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.03, z: -0.2}
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300004, guid: f58f8edd9a9d0ff44b47f52af377c357, type: 3}
 --- !u!136 &1929814331
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -41,9 +41,14 @@ public class Player : Entity {
     private void Move()
     {
         Vector3 v = new Vector3(Input.GetAxisRaw(playerName + "_Horizontal"), 0.0f, Input.GetAxisRaw(playerName + "_Vertical")).normalized;
+        v = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f) * v;
         var isWalking = v.sqrMagnitude > 0.5f;
         animator.SetBool("Walking", isWalking);
+
+        //Rotation
         if (isWalking) { transform.rotation = Quaternion.LookRotation(v); }
+
+        //Movement
         var agent = GetComponent<NavMeshAgent>();
         agent.Move(v * agent.speed);
     }
