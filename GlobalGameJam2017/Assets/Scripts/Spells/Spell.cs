@@ -43,4 +43,9 @@ public abstract class Spell : MonoBehaviour
     }
 
     protected abstract bool Cast(float channelingTime);
+
+    public void CancelChanneling()
+    {
+        ChannelingStartTime = float.NaN;
+    }
 }
