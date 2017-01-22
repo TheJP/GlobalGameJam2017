@@ -69,7 +69,6 @@ public class GameController : MonoBehaviour, IGameStart
         cameraController.SwitchToGame();
 
         //Start the game
-        var letter = 'A';
         var possibleSpawns = new Stack<Transform>(playerSpawnLocations.ToList());
         waveCount = 1;
         playerCount = data.GetGolems().Count();
@@ -86,8 +85,7 @@ public class GameController : MonoBehaviour, IGameStart
             Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
 
             //Assign the player a unique name (so he will be controlled by different keys)
-            player.GetComponent<Player>().playerName = letter.ToString();
-            ++letter;
+            player.GetComponent<Player>().playerName = golem.Color.GetPlayerName();
         }
         spawning = true;
         Invoke("InitWave", waveDelay);
