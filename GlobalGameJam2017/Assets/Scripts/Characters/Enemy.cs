@@ -23,6 +23,7 @@ public class Enemy : Entity
     private Player agro = null;
     private bool attacking = false;
     private int tick = 0;
+    private float distToGround = 1.5f;
 
     protected override void Start()
     {
@@ -54,9 +55,12 @@ public class Enemy : Entity
         }
 
         //Handle walking force
-        var force = direction * walkingForce;
-        force += Random.onUnitSphere * Random.Range(0.1f, 0.3f) * walkingForce;
-        GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z));
+        if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.2f))
+        {
+            var force = direction * walkingForce;
+            force += Random.onUnitSphere * Random.Range(0.1f, 0.3f) * walkingForce;
+            GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z));
+        }
 
         //Attacking
         attacking = agro != null && Vector3.Distance(transform.position, agro.transform.position) < attackRange;
@@ -108,5 +112,12 @@ public class Enemy : Entity
     {
         //Applies knock back from the shockwave ability
         GetComponent<Rigidbody>().AddForce((transform.position - other.transform.position).normalized * shockwaveForce);
+        var tmp = other.transform.parent.parent.GetComponent<Player>();
+        agro = (tmp != null) ? tmp : agro;
+    }
+
+    public void setAgro(Player player)
+    {
+        this.agro = player;
     }
 }
