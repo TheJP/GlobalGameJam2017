@@ -93,8 +93,8 @@ public class Enemy : Entity
         if (bestPath != null)
         {
             agent.SetPath(bestPath);
-            agro = nearestPlayer;
         }
+        agro = nearestPlayer;
     }
 
     private void Attack()
