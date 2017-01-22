@@ -108,5 +108,12 @@ public class Enemy : Entity
     {
         //Applies knock back from the shockwave ability
         GetComponent<Rigidbody>().AddForce((transform.position - other.transform.position).normalized * shockwaveForce);
+        var tmp = other.transform.parent.parent.GetComponent<Player>();
+        agro = (tmp != null) ? tmp : agro;
+    }
+
+    public void setAgro(Player player)
+    {
+        this.agro = player;
     }
 }
