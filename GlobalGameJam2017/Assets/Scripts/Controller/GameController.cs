@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Menu;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour, IGameStart
 {
+    public CameraController cameraController;
     public Transform[] playerSpawnLocations;
     public Transform[] enemySpawnLocations;
 
@@ -19,18 +22,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        var letter = 'A';
-        foreach(var spawn in playerSpawnLocations)
-        {
-            //Spawn player and add shockwave spell
-            var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
-            Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
-
-            //Assign the player a unique name (so he will be controlled by different keys)
-            player.GetComponent<Player>().playerName = letter.ToString();
-            ++letter;
-        }
-        SpawnWave(5);
     }
 
     void FixedUpdate()
@@ -50,5 +41,27 @@ public class GameController : MonoBehaviour
     private void SpawnWave(int size)
     {
         enemiesToSpawn = size;
+    }
+
+    public void StartGame(MenuData data)
+    {
+        //Turn camera
+        cameraController.SwitchToGame();
+
+        //Start the game
+        var letter = 'A';
+        var possibleSpawns = new Stack<Transform>(playerSpawnLocations.ToList());
+        foreach (var golem in data.Golems)
+        {
+            //Spawn player and add shockwave spell
+            var spawn = possibleSpawns.Pop();
+            var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
+            Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
+
+            //Assign the player a unique name (so he will be controlled by different keys)
+            player.GetComponent<Player>().playerName = letter.ToString();
+            ++letter;
+        }
+        SpawnWave(5);
     }
 }

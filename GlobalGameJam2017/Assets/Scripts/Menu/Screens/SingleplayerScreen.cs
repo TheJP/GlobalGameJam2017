@@ -7,15 +7,17 @@ using Assets.Scripts.Menu.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SingleplayerScreen : MonoBehaviour {
+public class SingleplayerScreen : MonoBehaviour
+{
 
-    private string[] _players = {"A"};
+    private string[] _players = { "A" };
 
     public List<MenuPlayer> Players;
+    private IGameStart gameStart;
 
     void Start()
     {
-
+        gameStart = FindObjectOfType<GameController>();
     }
 
 
@@ -64,31 +66,34 @@ public class SingleplayerScreen : MonoBehaviour {
                 .GetComponent<Button>();
                 btnRight.onClick.Invoke();
             }
+        }
+        
+        // ULTRA MAGIC
+        var allPlayers = transform.GetComponentsInChildren<CanvasGroup>()
+            .Where(c => c.transform.name == "Menu_PlayerSelection")
+            .ToList().Where(c => c.alpha == 1).ToList()
+            .Count;
 
+        var allReadyPlayers = transform.GetComponentsInChildren<CanvasGroup>()
+            .Where(c => c.transform.name == "ReadyBanner")
+            .ToList().Where(c => c.alpha == 1).ToList()
+            .Count;
 
+        var menuData = GameObject.Find("MenuCanvas").GetComponent<MenuData>();
 
-            // ULTRA MAGIC
-            var allPlayers =
-    this.transform.GetComponentsInChildren<CanvasGroup>()
-        .Where(c => c.transform.name == "Menu_PlayerSelection")
-        .ToList().Where(c => c.alpha == 1).ToList()
-        .Count;
-            var allReadyPlayers =
-                transform.GetComponentsInChildren<CanvasGroup>()
-                    .Where(c => c.transform.name == "ReadyBanner")
-                    .ToList().Where(c => c.alpha == 1).ToList()
-                    .Count;
-
-            //Debug.Log("allPlayers:" + allPlayers);
-            //Debug.Log("allReadyPlayers:" + allReadyPlayers);
-            if (allPlayers == allReadyPlayers && allPlayers != 0)
-            {
-                GameObject.Find("MenuCanvas").GetComponent<MenuData>().IsReadyToPlay = true;
-            }
-            else
-            {
-                GameObject.Find("MenuCanvas").GetComponent<MenuData>().IsReadyToPlay = false;
-            }
+        //Debug.Log("allPlayers:" + allPlayers);
+        //Debug.Log("allReadyPlayers:" + allReadyPlayers);
+        if (allPlayers == allReadyPlayers && allPlayers != 0)
+        {
+            menuData.IsReadyToPlay = true;
+            gameStart.StartGame(menuData);
+            var menuController = FindObjectOfType<MenuController>();
+            menuController.ScreenSingleplayer.SlideOut(SlideDirection.left);
+            menuController.ScreenGameConsole.SlideIn();
+        }
+        else
+        {
+            menuData.IsReadyToPlay = false;
         }
     }
 }

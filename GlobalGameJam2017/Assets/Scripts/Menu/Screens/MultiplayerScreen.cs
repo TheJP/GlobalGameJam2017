@@ -10,14 +10,14 @@ namespace Assets.Scripts.Menu.Screens
 {
     public class MultiplayerScreen : MonoBehaviour
     {
-
         private string[] _players = { "A", "B", "C", "D" };
 
         public List<MenuPlayer> Players;
+        private IGameStart gameStart;
 
         void Start()
         {
-
+            gameStart = FindObjectOfType<GameController>();
         }
 
 
@@ -80,19 +80,28 @@ namespace Assets.Scripts.Menu.Screens
                     .ToList().Where(c => c.alpha == 1).ToList()
                     .Count;
 
+            var menuData = GameObject.Find("MenuCanvas").GetComponent<MenuData>();
+
             //Debug.Log("allPlayers:" + allPlayers);
             //Debug.Log("allReadyPlayers:" + allReadyPlayers);
             if (allPlayers == allReadyPlayers && allPlayers != 0)
             {
-                GameObject.Find("MenuCanvas").GetComponent<MenuData>().IsReadyToPlay = true;
+                if (menuData.IsReadyToPlay && _players.Where(playerName =>Players
+                    .Single(p => p.transform.parent.name == "Player" + playerName + "Slot").IsReady)
+                    .Any(playerName => Input.GetButtonDown(playerName + "_a")))
+                {
+                    gameStart.StartGame(menuData);
+                    var menuController = FindObjectOfType<MenuController>();
+                    menuController.ScreenMultiplayer.SlideOut(SlideDirection.left);
+                    menuController.ScreenGameConsole.SlideIn();
+                }
+                menuData.IsReadyToPlay = true;
             }
             else
             {
-                GameObject.Find("MenuCanvas").GetComponent<MenuData>().IsReadyToPlay = false;
+                menuData.IsReadyToPlay = false;
 
             }
-
-
         }
     }
 }
