@@ -12,7 +12,7 @@ namespace Assets.Scripts.Menu
         public void Reset()
         {
             IsReadyToPlay = false;
-            Debug.Log("CLEAR: " + Golems.Count);
+            //Debug.Log("CLEAR: " + Golems.Count);
             this.Golems.Clear();
         }
 
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Menu
                 {
                     allgolems += golem.Color + " : " + golem.AttackType + " | ";
                 }
-                Debug.Log(allgolems);
+                //Debug.Log(allgolems);
             }
         }
 
