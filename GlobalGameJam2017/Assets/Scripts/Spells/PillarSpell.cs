@@ -8,6 +8,7 @@ public class PillarSpell : Spell {
     public Transform spellIndicator;
     public Transform maxRangeIndicator;
     public GameObject effect;
+    public float baseDamage;
     public float minRadius = 3;
     public float maxRadius = 6;
 

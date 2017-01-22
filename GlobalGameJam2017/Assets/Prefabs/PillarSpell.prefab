@@ -930,6 +930,7 @@ MonoBehaviour:
   spellIndicator: {fileID: 4048869843626402}
   maxRangeIndicator: {fileID: 4918547187786372}
   effect: {fileID: 1788884006698586}
+  baseDamage: 35
   minRadius: 3
   maxRadius: 9
 --- !u!136 &136081171881451814

@@ -31,7 +31,8 @@ public class PillarEffect : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        }
+        Damage = transform.parent.parent.GetComponent<PillarSpell>().baseDamage;
+    }
 
     private void LateUpdate()
     {
@@ -67,7 +68,7 @@ public class PillarEffect : MonoBehaviour
         transform.localScale = new Vector3(radius, radius, radius);
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
 
-        transform.parent.transform.parent.transform.parent.GetComponentInChildren<AudioPlay>().MiniMountain();
+        transform.parent.parent.parent.GetComponentInChildren<AudioPlay>().MiniMountain();
         //var module = particle.shape;
         //module.radius = radius; 
         //particle.Play();
@@ -113,7 +114,13 @@ public class PillarEffect : MonoBehaviour
         Enemy entity = other.GetComponent<Enemy>();
         if(entity != null)
         {
-            entity.DoDamage(200);
+            entity.DoDamage(strength * Damage);
+            Debug.Log((strength * Damage) + " damage done.");
+            Player tmp = transform.parent.parent.parent.GetComponent<Player>();
+            if(tmp != null)
+            {
+                entity.setAgro(tmp);
+            }
         }
     }
 
