@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxChannelingTime: 2
-  maxCastRange: 12
+  maxCastRange: 20
   channelingTimeBonus: 0.5
   spellIndicator: {fileID: 4040182738994348}
   spellMaxRangeIndicator: {fileID: 4528620190204752}

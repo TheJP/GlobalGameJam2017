@@ -43,7 +43,7 @@ ModelImporter:
     400032: LeftHand1
     400034: LeftHandEnd
     400036: LeftHandEnd1
-    7400000: Take 001
+    7400000: attack02
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -65,7 +65,73 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: attack02
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: enemy_furball
+        weight: 1
+      - path: enemy_furball/enemey_l_leg
+        weight: 1
+      - path: enemy_furball/enemy_head
+        weight: 1
+      - path: enemy_furball/enemy_l_hand
+        weight: 1
+      - path: enemy_furball/enemy_r_hand
+        weight: 1
+      - path: enemy_furball/enemy_r_leg
+        weight: 1
+      - path: Furby_Rig
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/joint4
+        weight: 1
+      - path: Hips/joint4/HeadEnd
+        weight: 1
+      - path: Hips/joint4/LeftHand
+        weight: 1
+      - path: Hips/joint4/LeftHand/LeftHandEnd
+        weight: 1
+      - path: Hips/joint4/LeftHand1
+        weight: 1
+      - path: Hips/joint4/LeftHand1/LeftHandEnd1
+        weight: 1
+      - path: Hips/LeftFoot
+        weight: 1
+      - path: Hips/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Hips/LeftFoot1
+        weight: 1
+      - path: Hips/LeftFoot1/LeftFootEnd1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
