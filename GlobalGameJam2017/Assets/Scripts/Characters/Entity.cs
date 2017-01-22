@@ -53,7 +53,7 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void OnDamageTaken(float damage) { }
 
-    private void Kill()
+    protected virtual void Kill()
     {
         Destroy(gameObject);
     }
