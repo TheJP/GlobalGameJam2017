@@ -18,11 +18,17 @@ public class GameController : MonoBehaviour, IGameStart
     public Transform playersGroup;
     public Transform enemiesGroup;
 
-    private int enemiesToSpawn = 0;
+    [Tooltip("Seconds how long wave spawning is delayed")]
+    public float waveDelay = 3f;
+    [Tooltip("How many enemies are initially spawned per player")]
+    public int initalWaveSizePerGolem = 2;
+    [Tooltip("How many enemies are added per wave per player (sum will be rounded down)")]
+    public float addEnemyPerWavePerPlayer = 1.5f;
 
-    void Start()
-    {
-    }
+    private int enemiesToSpawn = 0;
+    private int playerCount = 0;
+    private int waveCount = 1;
+    private bool spawning = true;
 
     void FixedUpdate()
     {
@@ -36,6 +42,20 @@ public class GameController : MonoBehaviour, IGameStart
                 if(enemiesToSpawn <= 0) { break; }
             }
         }
+
+        if(enemiesGroup.childCount <= 0 && !spawning)
+        {
+            spawning = true;
+            Invoke("InitWave", waveDelay);
+        }
+    }
+
+    private void InitWave()
+    {
+        var waveSize = (int) Mathf.Floor((initalWaveSizePerGolem + addEnemyPerWavePerPlayer * waveCount) * playerCount);
+        waveCount++;
+        spawning = false;
+        SpawnWave(waveSize);
     }
 
     private void SpawnWave(int size)
@@ -51,9 +71,16 @@ public class GameController : MonoBehaviour, IGameStart
         //Start the game
         var letter = 'A';
         var possibleSpawns = new Stack<Transform>(playerSpawnLocations.ToList());
-        foreach (var golem in data.Golems)
+        waveCount = 1;
+        playerCount = data.GetGolems().Count();
+        foreach (var golem in data.GetGolems())
         {
-            //Spawn player and add shockwave spell
+            if (possibleSpawns.Count <= 0)
+            {
+                Debug.LogError("Too many golems. Next golem: " + golem.Color.ToString());
+                continue;
+            }
+            //Spawn player and add spell
             var spawn = possibleSpawns.Pop();
             var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
             Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
@@ -62,6 +89,7 @@ public class GameController : MonoBehaviour, IGameStart
             player.GetComponent<Player>().playerName = letter.ToString();
             ++letter;
         }
-        SpawnWave(5);
+        spawning = true;
+        Invoke("InitWave", waveDelay);
     }
 }

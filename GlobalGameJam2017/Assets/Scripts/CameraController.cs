@@ -8,6 +8,9 @@ public class CameraController : MonoBehaviour
     public Transform menuLocation;
     public Transform gameLocation;
 
+    public float animationSpeed = 0.03f;
+    public float skyboxSpeed = 2f / 60f;
+
     private Transform targetLocation;
 
     public Camera skyboxCamera;
@@ -19,9 +22,9 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        skyboxCamera.transform.Rotate(Vector3.up, 2f / 60f);
-        transform.position = Vector3.Lerp(transform.position, targetLocation.position, 0.03f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetLocation.rotation, 0.03f);
+        skyboxCamera.transform.Rotate(Vector3.up, skyboxSpeed);
+        transform.position = Vector3.Lerp(transform.position, targetLocation.position, animationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetLocation.rotation, animationSpeed);
     }
 
     public void SwitchToGame() { targetLocation = gameLocation; }
