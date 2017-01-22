@@ -67,7 +67,7 @@ public class PillarEffect : MonoBehaviour
         transform.localScale = new Vector3(radius, radius, radius);
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
 
-    
+        transform.parent.transform.parent.transform.parent.GetComponentInChildren<AudioPlay>().MiniMountain();
         //var module = particle.shape;
         //module.radius = radius; 
         //particle.Play();

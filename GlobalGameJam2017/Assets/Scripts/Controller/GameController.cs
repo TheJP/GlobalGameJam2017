@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
 
             //Assign the player a unique name (so he will be controlled by different keys)
             player.GetComponent<Player>().playerName = letter.ToString();
+            
             ++letter;
         }
         SpawnWave(5);

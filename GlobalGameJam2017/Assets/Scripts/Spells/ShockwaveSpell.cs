@@ -51,6 +51,7 @@ public class ShockwaveSpell : Spell
         dustParticlesPosition = dustParticles.transform.position;
         dustParticles.SetActive(true);
         Invoke("ResetDust", WaitBevoreResetDust);
+        transform.parent.GetComponentInChildren<AudioPlay>().ImpactWind();
     }
 
     private void ResetDust()

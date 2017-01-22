@@ -30,10 +30,10 @@ public class Player : Entity {
         if(Health > 0.0f)
         {
             Move();
-            if (Input.GetButtonDown(playerName + "_a") && Spell != null) { Spell.StartChanneling(); }
+            if (Input.GetButtonDown(playerName + "_a") && Spell != null) { Spell.StartChanneling(); GetComponentInChildren<AudioPlay>().Channeling(); }
             if (Input.GetButtonUp(playerName + "_a"))
             {
-                if (Spell.Cast()) { animator.SetTrigger(SlamTrigger); }
+                if (Spell != null && Spell.Cast()) { animator.SetTrigger(SlamTrigger); GetComponentInChildren<AudioPlay>().Stop(); }
             }
         }
     }

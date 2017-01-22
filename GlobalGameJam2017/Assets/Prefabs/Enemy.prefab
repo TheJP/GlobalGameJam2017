@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   baseDamage: 100
-  attackRange: 2.5
+  attackRange: 0
   attackSpeed: 20
   walkingForce: 300
   fallingForce: 5
