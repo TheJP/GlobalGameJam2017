@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour, IGameStart
 
     public GameObject playerPrefab;
     public GameObject shockwaveSpellPrefab;
+    public GameObject pillarSpellPrefab;
     public GameObject enemyPrefab;
 
     public Transform playersGroup;
@@ -69,7 +70,6 @@ public class GameController : MonoBehaviour, IGameStart
         cameraController.SwitchToGame();
 
         //Start the game
-        var letter = 'A';
         var possibleSpawns = new Stack<Transform>(playerSpawnLocations.ToList());
         waveCount = 1;
         playerCount = data.GetGolems().Count();
@@ -83,11 +83,10 @@ public class GameController : MonoBehaviour, IGameStart
             //Spawn player and add spell
             var spawn = possibleSpawns.Pop();
             var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
-            Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
+            Instantiate(golem.AttackType == GolemAttackType.Pilar ? pillarSpellPrefab : shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
 
             //Assign the player a unique name (so he will be controlled by different keys)
-            player.GetComponent<Player>().playerName = letter.ToString();
-            ++letter;
+            player.GetComponent<Player>().playerName = golem.Color.GetPlayerName();
         }
         spawning = true;
         Invoke("InitWave", waveDelay);
