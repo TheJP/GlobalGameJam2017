@@ -1626,6 +1626,7 @@ MonoBehaviour:
   playerName: A
   animator: {fileID: 95469889485760430}
   bashEvasionChance: 0.9
+  golem_t: {fileID: 1550598837770826}
 --- !u!114 &114294725656394634
 MonoBehaviour:
   m_ObjectHideFlags: 1

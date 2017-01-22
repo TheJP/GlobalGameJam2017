@@ -58,7 +58,7 @@ public class Enemy : Entity
         if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.2f))
         {
             var force = direction * walkingForce;
-            force += Random.onUnitSphere * Random.Range(0.1f, 0.3f) * walkingForce;
+            force += Random.onUnitSphere * Random.Range(0.01f, 0.1f) * walkingForce;
             GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z));
         }
 
