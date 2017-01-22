@@ -9,16 +9,22 @@ using UnityEngine.Assertions;
 public class Player : Entity {
 
     private const string SlamTrigger = "Slam";
-
+        
     public string playerName = "A";
     public Animator animator;
     [Tooltip("Chance that the player does not get stunned by an enemy (higher = better for the player")]
     public float bashEvasionChance = 0.9f;
+    public GameObject golem_t;
 
     public Spell Spell { get; set; }
 
     protected override void Start () {
         base.Start();
+        Collider[] colliders = golem_t.transform.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = false;
+        }
         base.EntityFaction = Faction.PC;
         Assert.IsNotNull(animator, "Need golem animator in Player");
 	}
@@ -66,5 +72,21 @@ public class Player : Entity {
         if(Random.Range(0.0f, 1.0f) < bashEvasionChance) { return; } //Evaded
         if (Spell.IsChanneling) { Spell.CancelChanneling(); }
         animator.SetTrigger("Damaged");
+    }
+
+    protected override void Kill()
+    {
+        Collider[] colliders = golem_t.transform.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = true;
+        }
+        Invoke("KillAnimation", 1f);
+    }
+
+    private void KillAnimation()
+    {
+        transform.GetComponentInChildren<Animator>().enabled = false;
+        Destroy(gameObject, 5f);
     }
 }
