@@ -1331,6 +1331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuLocation: {fileID: 514458388}
   gameLocation: {fileID: 1476530651}
+  animationSpeed: 0.03
+  skyboxSpeed: 0.033333335
   skyboxCamera: {fileID: 640782853}
 --- !u!1 &1008399818
 GameObject:
@@ -2000,10 +2002,15 @@ MonoBehaviour:
     type: 2}
   shockwaveSpellPrefab: {fileID: 1369201752973362, guid: 1556dd0de1c2a4e46bf467f370c75a31,
     type: 2}
+  pillarSpellPrefab: {fileID: 1571731793834896, guid: 3f26a02b4d2bfc142a6c339700b698f0,
+    type: 2}
   enemyPrefab: {fileID: 1764231087155904, guid: ecad99af6e3c9d34dabea710512e9e69,
     type: 2}
   playersGroup: {fileID: 1307218249}
   enemiesGroup: {fileID: 26145890}
+  waveDelay: 3
+  initalWaveSizePerGolem: 2
+  addEnemyPerWavePerPlayer: 1.5
 --- !u!1001 &1293828745
 Prefab:
   m_ObjectHideFlags: 0

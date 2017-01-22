@@ -115,7 +115,7 @@ public class PillarEffect : MonoBehaviour
         if(entity != null)
         {
             entity.DoDamage(strength * Damage);
-            Debug.Log((strength * Damage) + " damage done.");
+            //Debug.Log((strength * Damage) + " damage done.");
             Player tmp = transform.parent.parent.parent.GetComponent<Player>();
             if(tmp != null)
             {
