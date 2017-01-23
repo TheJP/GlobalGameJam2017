@@ -5,42 +5,34 @@ using UnityEngine;
 public class Boat : MonoBehaviour
 {
 
-    public GameObject BoatRegion;
-    private Vector3 _target;
-    public float speed;
+    public Transform boatRegion;
+    public float speed = 20.0f;
+    public float turnSpeed = 0.01f;
 
-	// Use this for initialization
-	void Start () {
+    private Vector3 _target;
+
+    void Start()
+    {
         _target = RandomPointOnPlane();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-        
-        this.GetComponent<Rigidbody>().velocity = ((_target - transform.localPosition).normalized * speed);
 
-        if (Vector3.Distance(_target, this.transform.localPosition) < speed * 2)
-	    {
+    void FixedUpdate()
+    {
+        var rigidbody = GetComponent<Rigidbody>();
+        var direction = (_target - transform.position).normalized;
+        rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * speed, ForceMode.Force);
 
+        if (Vector3.Distance(_target, transform.position) < speed)
+        {
             _target = RandomPointOnPlane();
         }
 
-        //Debug.DrawRay(transform.pCKosition, Camera^§ _target - transform.position, Color.red);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(this.GetComponent<Rigidbody>().velocity), 0.1f);
-        //Debug.Log(_target);
-
-
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), turnSpeed);
+        //Debug.DrawLine(transform.position, _target, Color.red);
     }
 
     private Vector3 RandomPointOnPlane()
     {
-        var x = Random.Range(-(BoatRegion.transform.position.x), BoatRegion.transform.position.x);
-        var y = 0;// Random.Range(position.y - scale.x / 2f, position.y + scale.y / 2f);
-        //var z = Random.Range(position.z - scale.x / 0.2f, position.z + scale.z / 0.2f);
-        var z = Random.Range(-(BoatRegion.transform.position.z), BoatRegion.transform.position.z);
-        Vector3 randomPoint = new Vector3(x*10, y*10, z*10);
-
-        return randomPoint;
+        return boatRegion.TransformPoint(new Vector3(Random.Range(-0.5f, 0.5f), 0.0f, Random.Range(-0.5f, 0.5f)));
     }
 }
