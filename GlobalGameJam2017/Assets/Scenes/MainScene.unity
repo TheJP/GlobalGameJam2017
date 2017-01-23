@@ -42,7 +42,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -71,7 +71,8 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 001ffe4c77d95d74191d858073a83503,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -505,36 +506,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114156205664563622, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: BoatRegion
-      value: 
-      objectReference: {fileID: 604868497}
-    - target: {fileID: 114156205664563622, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: boatRegion
-      value: 
-      objectReference: {fileID: 604868498}
-    - target: {fileID: 114156205664563622, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: turnSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 23729994896649210, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54075642805911178, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: m_Drag
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114156205664563622, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-        type: 2}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
   m_IsPrefabParent: 0
@@ -685,16 +656,6 @@ Transform:
   m_Father: {fileID: 1292778069}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &604868497 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1296871464311104, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-    type: 2}
-  m_PrefabInternal: {fileID: 537237730}
---- !u!4 &604868498 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4485199158544904, guid: b53e49d695e685b4d9fc7af02ad0ae4d,
-    type: 2}
-  m_PrefabInternal: {fileID: 537237730}
 --- !u!1 &640782848
 GameObject:
   m_ObjectHideFlags: 0
