@@ -930,9 +930,9 @@ MonoBehaviour:
   spellIndicator: {fileID: 4048869843626402}
   maxRangeIndicator: {fileID: 4918547187786372}
   effect: {fileID: 1788884006698586}
-  baseDamage: 35
-  minRadius: 3
-  maxRadius: 9
+  baseDamage: 100
+  minRadius: 4
+  maxRadius: 15
 --- !u!136 &136081171881451814
 CapsuleCollider:
   m_ObjectHideFlags: 1

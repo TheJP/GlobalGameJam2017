@@ -620,7 +620,7 @@ MonoBehaviour:
   attackSpeed: 20
   walkingForce: 300
   fallingForce: 5
-  shockwaveForce: 15000
+  shockwaveForce: 25000
   animator: {fileID: 95235131031838740}
 --- !u!136 &136014923322030166
 CapsuleCollider:

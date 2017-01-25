@@ -115,11 +115,11 @@ public class PillarEffect : MonoBehaviour
         if(entity != null)
         {
             entity.DoDamage(strength * Damage);
-            Debug.Log((strength * Damage) + " damage done.");
-            Player tmp = transform.parent.parent.parent.GetComponent<Player>();
-            if(tmp != null)
+            //Debug.Log((strength * Damage) + " damage done.");
+            var player = transform.parent.parent.parent.GetComponent<Player>(); //uuhm? Please refactor -JP
+            if(player != null)
             {
-                entity.setAgro(tmp);
+                entity.setAgro(player);
             }
         }
     }

@@ -57,3 +57,18 @@ namespace Assets.Scripts.Menu
 
     public enum GolemAttackType { Pilar, Slam, Beam }
 }
+
+public static class GolemColorExtensions
+{
+    public static string GetPlayerName(this Assets.Scripts.Menu.GolemColor color)
+    {
+        switch (color)
+        {
+            case Assets.Scripts.Menu.GolemColor.Red: return "A";
+            case Assets.Scripts.Menu.GolemColor.Blue: return "B";
+            case Assets.Scripts.Menu.GolemColor.Green: return "C";
+            case Assets.Scripts.Menu.GolemColor.Yellow: return "D";
+            default: throw new System.ArgumentException("Unkown color");
+        }
+    }
+}

@@ -106,7 +106,7 @@ namespace Assets.Scripts.Menu
                 }
             }
 
-            if (_allScreens.Count <= deactivatedScreens)
+            if (_allScreens.Count <= deactivatedScreens && ScreenEnter != null)
             {
                 ScreenEnter.SlideIn();
             }

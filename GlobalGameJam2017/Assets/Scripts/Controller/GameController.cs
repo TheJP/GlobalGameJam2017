@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Menu;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IGameStart
 {
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour, IGameStart
 
     public GameObject playerPrefab;
     public GameObject shockwaveSpellPrefab;
+    public GameObject pillarSpellPrefab;
     public GameObject enemyPrefab;
 
     public Transform playersGroup;
@@ -28,7 +30,9 @@ public class GameController : MonoBehaviour, IGameStart
     private int enemiesToSpawn = 0;
     private int playerCount = 0;
     private int waveCount = 1;
+    /// <summary>Variable that prevents the spawning of too many enemies.</summary>
     private bool spawning = true;
+    private bool gameRunning = false;
 
     void FixedUpdate()
     {
@@ -43,11 +47,31 @@ public class GameController : MonoBehaviour, IGameStart
             }
         }
 
-        if(enemiesGroup.childCount <= 0 && !spawning)
+        //Spawn next wave if there are no more enemies left
+        if(!spawning && enemiesGroup.childCount <= 0)
         {
             spawning = true;
             Invoke("InitWave", waveDelay);
         }
+
+        //Handle gameover 
+        if(gameRunning && playersGroup.childCount <= 0)
+        {
+            cameraController.SwitchToMenu();
+            gameRunning = false;
+            var menuController = FindObjectOfType<MenuController>();
+            menuController.ScreenGameConsole.SlideOut(SlideDirection.top);
+
+            //Workaround until menu works correctly
+            menuController.ScreenEnter = null;
+            Invoke("ResetScene", 4.0f);
+            //menuController.ScreenEnter.SlideIn();
+        }
+    }
+
+    private void ResetScene()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
     private void InitWave()
@@ -68,10 +92,13 @@ public class GameController : MonoBehaviour, IGameStart
         //Turn camera
         cameraController.SwitchToGame();
 
+        //Remove old enemies
+        foreach(var enemy in enemiesGroup.Cast<GameObject>()) { Destroy(enemy); }
+
         //Start the game
-        var letter = 'A';
         var possibleSpawns = new Stack<Transform>(playerSpawnLocations.ToList());
         waveCount = 1;
+        enemiesToSpawn = 0;
         playerCount = data.GetGolems().Count();
         foreach (var golem in data.GetGolems())
         {
@@ -83,13 +110,13 @@ public class GameController : MonoBehaviour, IGameStart
             //Spawn player and add spell
             var spawn = possibleSpawns.Pop();
             var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
-            Instantiate(shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
+            Instantiate(golem.AttackType == GolemAttackType.Pilar ? pillarSpellPrefab : shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
 
             //Assign the player a unique name (so he will be controlled by different keys)
-            player.GetComponent<Player>().playerName = letter.ToString();
-            ++letter;
+            player.GetComponent<Player>().playerName = golem.Color.GetPlayerName();
         }
         spawning = true;
         Invoke("InitWave", waveDelay);
+        gameRunning = true;
     }
 }

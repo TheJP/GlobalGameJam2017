@@ -18,7 +18,8 @@ public class Enemy : Entity
     public float shockwaveForce = 4000.0f;
     public Animator animator;
 
-    private const float turnRate = 0.1f;
+    private const float TurnRate = 0.1f;
+    private const string WalkingAnimation = "Walking";
 
     private Player agro = null;
     private bool attacking = false;
@@ -32,8 +33,8 @@ public class Enemy : Entity
         var agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         agent.updateRotation = false;
-        Assert.IsNotNull(animator, "Need furby / dwarvf animator in Enemy");
-        animator.SetBool("Walking", true);
+        Assert.IsNotNull(animator, "Need furby / dwarf animator in Enemy");
+        animator.SetBool(WalkingAnimation, true);
     }
 
     protected override void FixedUpdate()
@@ -51,7 +52,7 @@ public class Enemy : Entity
         //Handle rotation
         if (direction.sqrMagnitude > 0.5f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), turnRate);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), TurnRate);
         }
 
         //Handle walking force
@@ -59,7 +60,7 @@ public class Enemy : Entity
         {
             var force = direction * walkingForce;
             force += Random.onUnitSphere * Random.Range(0.01f, 0.1f) * walkingForce;
-            GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z));
+            GetComponent<Rigidbody>().AddForce(new Vector3(force.x, -fallingForce, force.z), ForceMode.Force);
         }
 
         //Attacking
@@ -93,15 +94,15 @@ public class Enemy : Entity
         if (bestPath != null)
         {
             agent.SetPath(bestPath);
-            agro = nearestPlayer;
         }
+        agro = nearestPlayer;
     }
 
     private void Attack()
     {
         if (tick == attackSpeed)
         {
-            agro.DoDamage(this.Damage);
+            agro.DoDamage(Damage);
             animator.SetTrigger("Attack");
             tick = 0;
         }
@@ -112,12 +113,11 @@ public class Enemy : Entity
     {
         //Applies knock back from the shockwave ability
         GetComponent<Rigidbody>().AddForce((transform.position - other.transform.position).normalized * shockwaveForce);
-        var tmp = other.transform.parent.parent.GetComponent<Player>();
-        agro = (tmp != null) ? tmp : agro;
+        agro = other.transform.parent.parent.GetComponent<Player>() ?? agro;
     }
 
     public void setAgro(Player player)
     {
-        this.agro = player;
+        agro = player;
     }
 }

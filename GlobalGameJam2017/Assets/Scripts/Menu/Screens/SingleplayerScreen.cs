@@ -86,10 +86,13 @@ public class SingleplayerScreen : MonoBehaviour
         if (allPlayers == allReadyPlayers && allPlayers != 0)
         {
             menuData.IsReadyToPlay = true;
-            gameStart.StartGame(menuData);
-            var menuController = FindObjectOfType<MenuController>();
-            menuController.ScreenSingleplayer.SlideOut(SlideDirection.left);
-            menuController.ScreenGameConsole.SlideIn();
+            if (Input.GetButtonDown(_players.Single() + "_a"))
+            {
+                gameStart.StartGame(menuData);
+                var menuController = FindObjectOfType<MenuController>();
+                menuController.ScreenSingleplayer.SlideOut(SlideDirection.left);
+                menuController.ScreenGameConsole.SlideIn();
+            }
         }
         else
         {
