@@ -218,6 +218,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &61601746
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &171410606
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,48 +509,6 @@ MonoBehaviour:
   maxHealth: 100
   baseDamage: 24
   attackSpeed: 20
---- !u!1001 &537237730
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -135
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602618993425760, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b53e49d695e685b4d9fc7af02ad0ae4d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &540070125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1395,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1439,6 +1439,7 @@ MonoBehaviour:
   gameLocation: {fileID: 1476530651}
   animationSpeed: 0.03
   skyboxSpeed: 0.033333335
+  groupOfFocusedObjects: {fileID: 1307218249}
   skyboxCamera: {fileID: 640782853}
 --- !u!1 &1008399818
 GameObject:
