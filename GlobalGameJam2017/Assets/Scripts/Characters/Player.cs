@@ -69,23 +69,17 @@ public class Player : Entity {
 
     protected override void OnDamageTaken(float damage)
     {
-        if(Random.Range(0.0f, 1.0f) < bashEvasionChance) { return; } //Evaded
+        if (Random.Range(0.0f, 1.0f) < bashEvasionChance) { return; } //Evaded
         if (Spell.IsChanneling) { Spell.CancelChanneling(); }
         animator.SetTrigger("Damaged");
     }
 
     protected override void Kill()
     {
-        Collider[] colliders = golem_t.transform.GetComponentsInChildren<Collider>();
-        foreach (Collider c in colliders)
+        foreach (Collider collider in golem_t.GetComponentsInChildren<Collider>())
         {
-            c.enabled = true;
+            collider.enabled = true;
         }
-        Invoke("KillAnimation", 1f);
-    }
-
-    private void KillAnimation()
-    {
         transform.GetComponentInChildren<Animator>().enabled = false;
         Destroy(gameObject, 5f);
     }

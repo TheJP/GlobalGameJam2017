@@ -22,7 +22,7 @@ public class Boat : MonoBehaviour
         var direction = (_target - transform.position).normalized;
         rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * speed, ForceMode.Force);
 
-        if (Vector3.Distance(_target, transform.position) < speed)
+        if (Vector3.Distance(_target, transform.position) < rigidbody.velocity.magnitude)
         {
             _target = RandomPointOnPlane();
         }
