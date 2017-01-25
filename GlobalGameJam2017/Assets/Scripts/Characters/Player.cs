@@ -8,8 +8,10 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : Entity {
 
-    private const string SlamTrigger = "Slam";
-        
+    private const string SlamAnimation = "Slam";
+    private const string WalkingAnimation = "Walking";
+    private const string DamagedAnimation = "Damaged";
+
     public string playerName = "A";
     public Animator animator;
     [Tooltip("Chance that the player does not get stunned by an enemy (higher = better for the player")]
@@ -20,13 +22,12 @@ public class Player : Entity {
 
     protected override void Start () {
         base.Start();
-        Collider[] colliders = golem_t.transform.GetComponentsInChildren<Collider>();
-        foreach (Collider c in colliders)
-        {
-            c.enabled = false;
-        }
         base.EntityFaction = Faction.PC;
         Assert.IsNotNull(animator, "Need golem animator in Player");
+        foreach (Collider collider in golem_t.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
 	}
 
     protected override void FixedUpdate () {
@@ -35,17 +36,16 @@ public class Player : Entity {
 
     private void Update()
     {
-        if(Health > 0.0f)
+        if (Health <= 0.0f) { return; }
+
+        Move();
+        if (Input.GetButtonDown(playerName + "_a") && Spell != null && Spell.StartChanneling())
         {
-            Move();
-            if (Input.GetButtonDown(playerName + "_a") && Spell != null && Spell.StartChanneling())
-            {
-                GetComponentInChildren<AudioPlay>().Channeling();
-            }
-            if (Input.GetButtonUp(playerName + "_a"))
-            {
-                if (Spell != null && Spell.Cast()) { animator.SetTrigger(SlamTrigger); GetComponentInChildren<AudioPlay>().Stop(); }
-            }
+            GetComponentInChildren<AudioPlay>().Channeling();
+        }
+        if (Input.GetButtonUp(playerName + "_a"))
+        {
+            if (Spell != null && Spell.Cast()) { animator.SetTrigger(SlamAnimation); GetComponentInChildren<AudioPlay>().Stop(); }
         }
     }
 
@@ -61,7 +61,7 @@ public class Player : Entity {
         //Movement
         if (!Spell.IsChanneling && !Spell.IsCasting)
         {
-            animator.SetBool("Walking", isWalking);
+            animator.SetBool(WalkingAnimation, isWalking);
             var agent = GetComponent<NavMeshAgent>();
             agent.Move(v * agent.speed);
         }
@@ -71,7 +71,7 @@ public class Player : Entity {
     {
         if (Random.Range(0.0f, 1.0f) < bashEvasionChance) { return; } //Evaded
         if (Spell.IsChanneling) { Spell.CancelChanneling(); }
-        animator.SetTrigger("Damaged");
+        animator.SetTrigger(DamagedAnimation);
     }
 
     protected override void Kill()
