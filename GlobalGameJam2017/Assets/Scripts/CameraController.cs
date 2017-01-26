@@ -42,6 +42,19 @@ public class CameraController : MonoBehaviour
         }
         if (count > 0) { focusTarget /= count; }
 
+        //Find maximal distance of a focus object to found center
+        var maxDistance = 0.0f;
+        var focusObject = Vector3.zero;
+        for(int i = count - 1; i >= 0; --i)
+        {
+            var distance = Vector3.Distance(groupOfFocusedObjects.GetChild(i).position, focusTarget);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                focusObject = groupOfFocusedObjects.GetChild(i).position;
+            }
+        }
+
         //Move camera gradually to center
         var direction = transform.TransformDirection(Vector3.forward);
         var factor = (focusTarget.y - targetLocation.position.y) / direction.y;
