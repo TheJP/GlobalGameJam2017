@@ -111,9 +111,14 @@ public class GameController : MonoBehaviour, IGameStart
             var spawn = possibleSpawns.Pop();
             var player = Instantiate(playerPrefab, spawn.position, Quaternion.identity, playersGroup);
             Instantiate(golem.AttackType == GolemAttackType.Pilar ? pillarSpellPrefab : shockwaveSpellPrefab, player.transform.position, Quaternion.identity, player.transform);
-
+            
             //Assign the player a unique name (so he will be controlled by different keys)
             player.GetComponent<Player>().playerName = golem.Color.GetPlayerName();
+
+            //Enable UI Healthbar here
+            var screenGameConsole = GameObject.Find("MenuCanvas").GetComponent<MenuController>().ScreenGameConsole.gameObject;
+            screenGameConsole.transform.FindChild("Player" + player.GetComponent<Player>().playerName).gameObject.SetActive(true);
+
         }
         spawning = true;
         Invoke("InitWave", waveDelay);
