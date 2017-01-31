@@ -974,6 +974,7 @@ MonoBehaviour:
   boatRegion: {fileID: 4485199158544904}
   speed: 15
   turnSpeed: 0.01
+  water: {fileID: 0}
 --- !u!114 &114290564774569362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,6 +989,7 @@ MonoBehaviour:
   boatRegion: {fileID: 4485199158544904}
   speed: 15
   turnSpeed: 0.01
+  water: {fileID: 0}
 --- !u!114 &114543866067753534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1002,3 +1004,4 @@ MonoBehaviour:
   boatRegion: {fileID: 4485199158544904}
   speed: 15
   turnSpeed: 0.01
+  water: {fileID: 0}

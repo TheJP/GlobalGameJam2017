@@ -8,6 +8,7 @@ public class Boat : MonoBehaviour
     public Transform boatRegion;
     public float speed = 20.0f;
     public float turnSpeed = 0.01f;
+    public WaterGen water;
 
     private Vector3 _target;
 
@@ -20,7 +21,9 @@ public class Boat : MonoBehaviour
     {
         var rigidbody = GetComponent<Rigidbody>();
         var direction = (_target - transform.position).normalized;
-        rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * speed, ForceMode.Force);
+        var force = transform.TransformDirection(Vector3.forward) * speed;
+        force.y = 0.0f;
+        rigidbody.AddForce(force, ForceMode.Force);
 
         if (Vector3.Distance(_target, transform.position) < rigidbody.velocity.magnitude)
         {
@@ -28,6 +31,8 @@ public class Boat : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), turnSpeed);
+        var waterPosition = water.transform.InverseTransformPoint(transform.position);
+        transform.position = new Vector3(transform.position.x, boatRegion.position.y + Mathf.Sin(Time.time * water.speed + waterPosition.x + waterPosition.z) * 10f + 2f, transform.position.z);
         //Debug.DrawLine(transform.position, _target, Color.red);
     }
 
