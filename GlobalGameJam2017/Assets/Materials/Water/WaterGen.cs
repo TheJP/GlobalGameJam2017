@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class WaterGen : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-
     public float scale = 10.0f;
     public float speed = 1.0f;
     public float noiseStrength = 4.0f;

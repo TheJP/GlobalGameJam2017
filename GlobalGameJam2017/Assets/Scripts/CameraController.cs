@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
 
     private Transform targetLocation;
     private bool inGame = false;
+    private float zoomFactor = 0.0f;
 
     public Camera skyboxCamera;
 
@@ -43,16 +44,12 @@ public class CameraController : MonoBehaviour
         if (count > 0) { focusTarget /= count; }
 
         //Find maximal distance of a focus object to found center
-        var maxDistance = 0.0f;
-        var focusObject = Vector3.zero;
-        for(int i = count - 1; i >= 0; --i)
+        var maxDistances = Vector2.zero;
+        for (int i = count - 1; i >= 0; --i)
         {
-            var distance = Vector3.Distance(groupOfFocusedObjects.GetChild(i).position, focusTarget);
-            if (distance > maxDistance)
-            {
-                maxDistance = distance;
-                focusObject = groupOfFocusedObjects.GetChild(i).position;
-            }
+            var distance = Camera.main.WorldToViewportPoint(groupOfFocusedObjects.GetChild(i).position);
+            maxDistances.x = Mathf.Max(maxDistances.x, Mathf.Abs(distance.x - 0.5f)); //(0.5f, 0.5f) is the camera position
+            maxDistances.y = Mathf.Max(maxDistances.y, Mathf.Abs(distance.y - 0.5f));
         }
 
         //Move camera gradually to center
@@ -63,13 +60,23 @@ public class CameraController : MonoBehaviour
         //Position, where the camera intersects the viewed plane
         var camera = targetLocation.position + factor * direction;
         var target = targetLocation.position + (focusTarget - camera);
+        target.y = targetLocation.position.y;
 
-        return new Vector3(target.x, targetLocation.position.y, target.z);
+        //Zoom in or out, so that: 1. All golems are visible 2. The camera is as near as possible
+        //3. The camera does not jitter back and forth too much
+        zoomFactor += maxDistances.x > 0.35f || maxDistances.y > 0.35f ? -0.01f : (
+            maxDistances.x < 0.30f && maxDistances.y < 0.30f ? 0.01f : 0.0f);
+        zoomFactor = Mathf.Clamp(zoomFactor, 0.0f, 0.7f);
+        var zoomDirection = (focusTarget - target) * zoomFactor;
+        target += zoomDirection;
+
+        return target;
     }
 
     public void SwitchToGame()
     {
         targetLocation = gameLocation;
+        zoomFactor = 0.0f;
         inGame = true;
     }
 
