@@ -17,9 +17,19 @@ public class GameConsoleScreen : MonoBehaviour
 
     private GameController _gameController;
 
+    private float _maxHealthWidth;
+    private float _maxHealthPos;
+    private float _minHealthPos;
+
+
     void Start()
     {
         _gameController = FindObjectOfType<GameController>();
+
+        _maxHealthWidth = 60.7f;
+        _maxHealthPos = -390.8f;
+        _minHealthPos = -420.0f;
+
     }
 
 	// Update is called once per frame
@@ -34,15 +44,14 @@ public class GameConsoleScreen : MonoBehaviour
 	            var maxHealth = player.maxHealth;
 
 	            PlayerA.transform.FindChild("HealthALayer03").GetComponent<Text>().text = (maxHealth/100*health).ToString(CultureInfo.InvariantCulture) + "%";
-	            //var posX = PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>().rect.x;
-             //   var posY = PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>().rect.y;
-             //   var width = PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>().rect.width;
-             //   var height = PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>().rect.height;
+	            var rt = PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>();
+                
+                rt.sizeDelta = new Vector2((_maxHealthWidth/100) * (maxHealth/100*health), rt.sizeDelta.y);
+	            //rt.localPosition = new Vector2(Mathf.Clamp((maxHealth / health / rt.localPosition.x) - rt.localPosition.x,  _maxHealthPos, _minHealthPos), rt.localPosition.y);
+                //Debug.Log(_minHealthPos + " " + (maxHealth / health) / rt.localPosition.x + " " + _maxHealthPos);
 
-             //   PlayerA.transform.FindChild("HealthALayer02").GetComponent<RectTransform>().rect.Set((posX - (maxHealth / 100 * health)), posY, width,height);
-
-	        }
-	    }
+            }
+        }
 	    if (PlayerB.activeInHierarchy)
         {
             var player = _gameController.playersGroup.GetComponentsInChildren<Player>().FirstOrDefault(p => p.playerName == "B");
@@ -51,7 +60,10 @@ public class GameConsoleScreen : MonoBehaviour
                 var health = player.Health;
                 var maxHealth = player.maxHealth;
 
-                PlayerA.transform.FindChild("HealthALayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                PlayerA.transform.FindChild("HealthBLayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                var rt = PlayerA.transform.FindChild("HealthBLayer02").GetComponent<RectTransform>();
+
+                rt.sizeDelta = new Vector2((_maxHealthWidth / 100) * (maxHealth / 100 * health), rt.sizeDelta.y);
             }
         }
         if (PlayerC.activeInHierarchy)
@@ -62,7 +74,10 @@ public class GameConsoleScreen : MonoBehaviour
                 var health = player.Health;
                 var maxHealth = player.maxHealth;
 
-                PlayerA.transform.FindChild("HealthALayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                PlayerA.transform.FindChild("HealthCLayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                var rt = PlayerA.transform.FindChild("HealthCLayer02").GetComponent<RectTransform>();
+
+                rt.sizeDelta = new Vector2((_maxHealthWidth / 100) * (maxHealth / 100 * health), rt.sizeDelta.y);
             }
         }
         if (PlayerD.activeInHierarchy)
@@ -73,7 +88,10 @@ public class GameConsoleScreen : MonoBehaviour
                 var health = player.Health;
                 var maxHealth = player.maxHealth;
 
-                PlayerA.transform.FindChild("HealthALayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                PlayerA.transform.FindChild("HealthDLayer03").GetComponent<Text>().text = (maxHealth / 100 * health).ToString(CultureInfo.InvariantCulture) + "%";
+                var rt = PlayerA.transform.FindChild("HealthDLayer02").GetComponent<RectTransform>();
+
+                rt.sizeDelta = new Vector2((_maxHealthWidth / 100) * (maxHealth / 100 * health), rt.sizeDelta.y);
             }
         }
     }
